@@ -1,0 +1,20 @@
+{
+  "name": "website_template_for_lamm_javascript",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "start": "node app.js"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "library_architecture_mvvm_modify_javascript": "^1.0.2",
+    "lodash": "^4.17.21"
+  }
+}
