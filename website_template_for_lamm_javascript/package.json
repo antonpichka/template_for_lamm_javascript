@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config webpack.config.js",
+    "build-redirectvm": "webpack --config webpack.redirectvm.config.js",
     "server": "node app.js"
   },
   "devDependencies": {

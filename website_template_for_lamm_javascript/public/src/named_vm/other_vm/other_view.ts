@@ -5,15 +5,15 @@ import { EnumDataForOtherView } from "./enum_data_for_other_view";
 
 class OtherView {
     /// RELEASE CODE
-    private readonly viewModel: OtherViewModel;
+    // private readonly viewModel: OtherViewModel;
     /// TEST CODE
-    // private readonly viewModel: TestOtherViewModel;
+    private readonly viewModel: TestOtherViewModel;
 
     public constructor() {
         /// RELEASE CODE
-        this.viewModel = new OtherViewModel();
+        // this.viewModel = new OtherViewModel();
         /// TEST CODE
-        // this.viewModel = new TestOtherViewModel();
+        this.viewModel = new TestOtherViewModel();
         this.initParameterViewModel();
         this.buildParameterViewModel();
     }

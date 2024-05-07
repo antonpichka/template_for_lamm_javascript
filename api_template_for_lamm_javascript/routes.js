@@ -1,35 +1,43 @@
 const express = require("express");
 const router = express.Router();
+const { LoginView }  = require("./dist/login_view.js");
 
 router.post("/login", (req,res) => {
   const authorization = req.header("Authorization") == null ? null : req.header("Authorization").replace("Bearer ", "");
   const username = req.body.username == null || req.body.username == "" ? null : req.body.username;
   const password = req.body.password == null || req.body.password == "" ? null : req.body.password;
-  if(authorization == null) {
-    res.status(401).json({
-      error: "401 (Unauthorized) You must specify 'Authorization'"
+  new LoginView(
+    authorization,
+    username,
+    password,
+    ()=>{
+      res.status(503).json({
+        error: "503 (Service Unavailable) The server is currently unable to handle the request due to a temporary overloading or maintenance of the server."
+      });
+    },
+    ()=>{
+      res.status(401).json({
+        error: "401 (Unauthorized) You must specify 'Authorization'"
+      });
+    },
+    ()=>{
+      res.status(401).json({  
+        error: "401 (Unauthorized) Token is not correct."
+      });
+    },
+    ()=>{
+      res.status(400).json({  
+        error: "400 (Bad Request) The request could not be understood by the server due to malformed syntax."
+      });
+    },
+    ()=>{
+      res.status(409).json({  
+        error: "409 (Conflict) Such data is already in the database."
+      });
+    },
+    ()=>{
+      res.status(200).json({});
     });
-    return;
-  } 
-  if(authorization != "f434343fwesferrrewsqswqwwrewdwq1") {
-    res.status(401).json({  
-      error: "401 (Unauthorized) Token is not correct."
-    });
-    return;
-  }
-  if(username == null || password == null) {
-    res.status(400).json({  
-      error: "400 (Bad Request) The request could not be understood by the server due to malformed syntax."
-    });
-    return;
-  }
-  if(username == "qwe") {
-    res.status(409).json({  
-      error: "409 (Conflict) Such data is already in the database."
-    });
-    return;
-  }
-  res.status(200).json({});
 });
 
 router.get("/search", (req, res) => {

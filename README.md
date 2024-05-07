@@ -11,6 +11,7 @@
 
 - [website_template_for_lamm_javascript](https://github.com/antonpichka/template_for_lamm_javascript#website_template_for_lamm_javascript)
 - [api_template_for_lamm_javascript](https://github.com/antonpichka/template_for_lamm_javascript#api_template_for_lamm_javascript)
+- [if_you_need_to_test_purely_js_or_ts_files](https://github.com/antonpichka/template_for_lamm_javascript#if_you_need_to_test_purely_js_or_ts_files)
 
 ### website_template_for_lamm_javascript
 
@@ -30,3 +31,8 @@
 ### api_template_for_lamm_javascript
 
 - Coming Soon
+
+### if_you_need_to_test_purely_js_or_ts_files
+
+- npx ts-node {name}.js
+- npx ts-node {name}.ts

@@ -5,15 +5,15 @@ import { TestIndexViewModel } from "./test_index_view_model";
 
 class IndexView {
     /// RELEASE CODE
-    private readonly viewModel: IndexViewModel;
+    // private readonly viewModel: IndexViewModel;
     /// TEST CODE
-    // private readonly viewModel: TestIndexViewModel;
+    private readonly viewModel: TestIndexViewModel;
 
     public constructor() {
         /// RELEASE CODE
-        this.viewModel = new IndexViewModel();
+        // this.viewModel = new IndexViewModel();
         /// TEST CODE
-        // this.viewModel = new TestIndexViewModel();
+        this.viewModel = new TestIndexViewModel();
         this.initParameterViewModel();
         this.buildParameterViewModel();
     }

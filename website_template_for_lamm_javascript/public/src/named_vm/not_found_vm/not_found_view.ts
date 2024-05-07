@@ -5,15 +5,15 @@ import { EnumDataForNotFoundView} from "./enum_data_for_not_found_view"
 
 class NotFoundView {
     /// RELEASE CODE
-    private readonly viewModel: NotFoundViewModel;
+    // private readonly viewModel: NotFoundViewModel;
     /// TEST CODE
-    // private readonly viewModel: TestNotFoundViewModel;
+    private readonly viewModel: TestNotFoundViewModel;
 
     public constructor() {
         /// RELEASE CODE
-        this.viewModel = new NotFoundViewModel();
+        // this.viewModel = new NotFoundViewModel();
         /// TEST CODE
-        // this.viewModel = new TestNotFoundViewModel();
+        this.viewModel = new TestNotFoundViewModel();
         this.initParameterViewModel();
         this.buildParameterViewModel();
     }
