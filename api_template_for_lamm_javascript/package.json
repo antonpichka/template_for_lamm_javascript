@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "server": "node app.js"
   },
   "devDependencies": {
     "typescript": "^5.4.5"
