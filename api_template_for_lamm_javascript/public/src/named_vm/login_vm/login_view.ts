@@ -13,26 +13,24 @@ export class LoginView {
         authorization: string, 
         username: string, 
         password: string, 
-        callbackWException: () => void,
+        callbackWException: (list: Array<any>) => void,
         callbackWFourHundredOneWYouMustSpecifyAuthorization: () => void,
         callbackWFourHundredOneWTokenIsNotCorrect: () => void,
         callbackWFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax: () => void,
-        callbackWFourHundredNineWSuchDataIsAlreadyInTheDatabase: () => void,
         callbackWSuccess: () => void) 
     {
          /// RELEASE CODE
          // this.viewModel = new LoginViewModelCutDown(authorization,username,password);
          /// TEST CODE
          this.viewModel = new TestLoginViewModelCutDown(authorization,username,password);
-         this.initWBuildParameterViewModel(callbackWException,callbackWFourHundredOneWYouMustSpecifyAuthorization,callbackWFourHundredOneWTokenIsNotCorrect,callbackWFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax,callbackWFourHundredNineWSuchDataIsAlreadyInTheDatabase,callbackWSuccess);
+         this.initWBuildParameterViewModel(callbackWException,callbackWFourHundredOneWYouMustSpecifyAuthorization,callbackWFourHundredOneWTokenIsNotCorrect,callbackWFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax,callbackWSuccess);
      }
      
      private async initWBuildParameterViewModel(
-        callbackWException: () => void, 
+        callbackWException: (list: Array<any>) => void,
         callbackWFourHundredOneWYouMustSpecifyAuthorization: () => void,
         callbackWFourHundredOneWTokenIsNotCorrect: () => void,
         callbackWFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax: () => void,
-        callbackWFourHundredNineWSuchDataIsAlreadyInTheDatabase: () => void,
         callbackWSuccess: () => void): Promise<void> 
      {
         const result = await this.viewModel.init();
@@ -40,7 +38,7 @@ export class LoginView {
         const dataForNamedParameterNamedState = this.viewModel.getDataForNamedParameterNamedState;
         switch(dataForNamedParameterNamedState.getEnumDataForNamed) {
             case EnumDataForLoginView.exception:
-                callbackWException();
+                callbackWException(dataForNamedParameterNamedState.getArrayWhereSwitchAndTwoElementsParameterExceptionController);
                 break;
             case EnumDataForLoginView.fourHundredOneWYouMustSpecifyAuthorization:
                 callbackWFourHundredOneWYouMustSpecifyAuthorization();
@@ -50,9 +48,6 @@ export class LoginView {
                 break;
             case EnumDataForLoginView.fourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax:
                 callbackWFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax();
-                break;
-            case EnumDataForLoginView.fourHundredNineWSuchDataIsAlreadyInTheDatabase:
-                callbackWFourHundredNineWSuchDataIsAlreadyInTheDatabase();
                 break;
             case EnumDataForLoginView.success:
                 callbackWSuccess();

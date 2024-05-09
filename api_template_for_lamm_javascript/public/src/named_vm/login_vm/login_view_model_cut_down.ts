@@ -7,7 +7,7 @@ export class LoginViewModelCutDown extends BaseNamedViewModelCutDown<DataForLogi
     // NamedUtility
 
     public constructor(authorization: string, username: string, password: string) {
-        super(new DefaultStreamWState<DataForLoginView>(new DataForLoginView(false,authorization,username,password,"","")));
+        super(new DefaultStreamWState<DataForLoginView>(new DataForLoginView(false,authorization,username,password,false,false,false)));
     }
 
     public override async init(): Promise<string> {

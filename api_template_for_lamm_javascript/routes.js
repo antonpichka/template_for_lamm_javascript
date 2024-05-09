@@ -10,29 +10,22 @@ router.post("/login", (req,res) => {
     authorization,
     username,
     password,
-    ()=>{
-      res.status(503).json({
-        error: "503 (Service Unavailable) The server is currently unable to handle the request due to a temporary overloading or maintenance of the server."
-      });
+    (list)=>{
+      res.status(list[0]).json(list[1]);
     },
     ()=>{
       res.status(401).json({
-        error: "401 (Unauthorized) You must specify 'Authorization'"
+        message: "401 (Unauthorized) You must specify 'Authorization'"
       });
     },
     ()=>{
       res.status(401).json({  
-        error: "401 (Unauthorized) Token is not correct."
+        message: "401 (Unauthorized) Token is not correct."
       });
     },
     ()=>{
       res.status(400).json({  
-        error: "400 (Bad Request) The request could not be understood by the server due to malformed syntax."
-      });
-    },
-    ()=>{
-      res.status(409).json({  
-        error: "409 (Conflict) Such data is already in the database."
+        message: "400 (Bad Request) The request could not be understood by the server due to malformed syntax."
       });
     },
     ()=>{
