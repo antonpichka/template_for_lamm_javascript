@@ -1,4 +1,4 @@
-export enum EnumDataForNotFoundView {
+export enum EnumDataForIndexVM {
     isLoading,
     exception,
     success

@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "express": "^4.19.2",
-    "library_architecture_mvvm_modify_javascript": "^1.0.3",
+    "library_architecture_mvvm_modify_javascript": "^2.0.1",
     "lodash": "^4.17.21"
   }
 }

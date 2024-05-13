@@ -1,4 +1,4 @@
-export enum EnumDataForIndexView {
+export enum EnumDataForOtherVM {
     isLoading,
     exception,
     success

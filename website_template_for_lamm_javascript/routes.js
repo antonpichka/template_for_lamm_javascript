@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
-// const { OtherRedirectView } = require("./dist/other_redirect_view.js");
+// const { OtherRedirectVM } = require("./dist/other_redirect_vm.js");
 
 router.get("/", (_req, res) => {
-  res.sendFile(__dirname + "/public/src/named_vm/index_vm/index_view.html");
+  res.sendFile(__dirname + "/public/src/named_vm/index_vm/index_vm.html");
 });
 
 router.get("/other", (_req, res) => {
-  // Using "OtherRedirectView" if needs (new OtherRedirectView(()=>{},()=>{}))
-  res.sendFile(__dirname + "/public/src/named_vm/other_vm/other_view.html");
+  // Using "OtherRedirectVM" if needs (new OtherRedirectVM(()=>{},()=>{}))
+  res.sendFile(__dirname + "/public/src/named_vm/other_vm/other_vm.html");
 });
 
 module.exports = router;

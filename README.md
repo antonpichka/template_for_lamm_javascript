@@ -1,6 +1,5 @@
 - https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#architectural-objects
-- https://github.com/antonpichka/library_architecture_mvvm_modify_javascript/blob/main/library_architecture_mvvm_modify_javascript/example/public/index.js
-- https://gist.github.com/antonpichka/38d852a3d9c8d66ec8bb6e1675628331
+- https://github.com/antonpichka/library_architecture_mvvm_modify_javascript/blob/main/library_architecture_mvvm_modify_javascript/example/index.ts
 - https://github.com/antonpichka/library_architecture_mvvm_modify/labels
 
 ---
@@ -31,8 +30,3 @@
 ### api_template_for_lamm_javascript
 
 - Coming Soon
-
-### if_you_need_to_test_purely_js_or_ts_files
-
-- npx ts-node {name}.js
-- npx ts-node {name}.ts

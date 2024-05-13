@@ -6,11 +6,11 @@ app.use("/public",express.static(__dirname + "/public/"));
 app.use("/dist",express.static(__dirname + "/dist/"));
 app.use("/",routes);
 
-app.use((req, res, next) => {
-  res.status(404).sendFile(__dirname + "/public/src/named_vm/not_found_vm/not_found_view.html");
+app.use((_req, res, _next) => {
+  res.status(404).sendFile(__dirname + "/public/src/named_vm/not_found_vm/not_found_vm.html");
 });
 
-app.use((err, req, res, next) => {
+app.use((err, _req, res, _next) => {
   res.status(500).send("Server not working: " + err.stack);
 });
 
