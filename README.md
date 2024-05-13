@@ -16,15 +16,11 @@
 - If you need to change the application name from 'website_template_for_lamm_javascript' to 'website_${your_name}':
 - - 'website_template_for_lamm_javascript/package.json':
 - - - '"name": "website_template_for_lamm_javascript"'
-
-- Commands:
-- - cd website_template_for_lamm_javascript
-- - npm install
-
-- Run Scripts:
-- - 'website_template_for_lamm_javascript/package.json':
-- - - npm run build
-- - - npm run start
+- Change your project's dependency path in "website_template_for_lamm_javascript\public\src\named_test_main\q_test_main\package.json":
+```
+"website_template_for_lamm_javascript": "file:../../../.."
+```
+- - ""website_${your_name_project}"="file:../../../..""
 
 ### api_template_for_lamm_javascript
 
