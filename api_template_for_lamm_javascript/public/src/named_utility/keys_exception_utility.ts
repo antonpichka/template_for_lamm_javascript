@@ -3,10 +3,17 @@ export class KeysExceptionUtility {
     public static readonly uNKNOWN = "uNKNOWN";
     /* Qw */
     public static readonly qwQQGetStringWhereIsEmptyParameterUsername = "qwQQGetStringWhereIsEmptyParameterUsername";
-    /* DataForLoginView */
-    public static readonly dataForLoginViewQQIsWhereEqualsNullParameterAuthorization = "dataForLoginViewQQIsWhereEqualsNullParameterAuthorization";
-    public static readonly dataForLoginViewQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "dataForLoginViewQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
-    public static readonly dataForLoginViewQQIsWhereEqualsNullParametersUsernameAndPassword = "dataForLoginViewQQIsWhereEqualsNullParametersUsernameAndPassword";
+    /* LoginVM */
+    public static readonly loginVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization = "loginVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization";
+    public static readonly loginVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "loginVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
+    public static readonly loginVMQQFirstQQInitQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword = "loginVMQQFirstQQInitQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword";
+    /* SearchVM */
+    public static readonly searchVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization = "searchVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization";
+    public static readonly searchVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "searchVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
+    public static readonly searchVMQQFirstQQInitQQIsWhereEqualsNullWEmptyParameterQ = "searchVMQQFirstQQInitQQIsWhereEqualsNullWEmptyParameterQ";
+    /* UserVM */
+    public static readonly userVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization = "userVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization";
+    public static readonly userVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "userVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
 
     private constructor() {
     }

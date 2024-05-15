@@ -1,4 +1,4 @@
-export enum EnumDataForSearchView {
+export enum EnumDataForSearchVM {
     exception,
     fourHundredOneWYouMustSpecifyAuthorization,
     fourHundredOneWTokenIsNotCorrect,

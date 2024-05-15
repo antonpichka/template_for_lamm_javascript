@@ -1,4 +1,4 @@
-export enum EnumDataForLoginView {
+export enum EnumDataForLoginVM {
     exception,
     fourHundredOneWYouMustSpecifyAuthorization,
     fourHundredOneWTokenIsNotCorrect,

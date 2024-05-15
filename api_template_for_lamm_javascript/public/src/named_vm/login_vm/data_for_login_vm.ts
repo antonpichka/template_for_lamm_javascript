@@ -1,8 +1,9 @@
 import { BaseDataForNamed } from "library_architecture_mvvm_modify_javascript";
-import { EnumDataForLoginView } from "./enum_data_for_login_view";
+import { EnumDataForLoginVM } from "./enum_data_for_login_vm";
 import { KeysAPIUtility } from "../../named_utility/keys_api_utility";
+import { AlgorithmsUtility } from "../../named_utility/algorithms_utility";
 
-export class DataForLoginView extends BaseDataForNamed<EnumDataForLoginView> {
+export class DataForLoginVM extends BaseDataForNamed<EnumDataForLoginVM> {
     public readonly authorization: string;
     public readonly username: string;
     public readonly password: string;
@@ -20,20 +21,20 @@ export class DataForLoginView extends BaseDataForNamed<EnumDataForLoginView> {
         this.isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax = isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax;
     }
 
-    public override get getEnumDataForNamed(): EnumDataForLoginView {
+    public override get getEnumDataForNamed(): EnumDataForLoginVM {
         if(this.exceptionController.isWhereNotEqualsNullParameterException()) {
-            return EnumDataForLoginView.exception;
+            return EnumDataForLoginVM.exception;
         }
         if(this.isFourHundredOneWYouMustSpecifyAuthorization) {
-            return EnumDataForLoginView.fourHundredOneWYouMustSpecifyAuthorization;
+            return EnumDataForLoginVM.fourHundredOneWYouMustSpecifyAuthorization;
         }
         if(this.isFourHundredOneWTokenIsNotCorrect) {
-            return EnumDataForLoginView.fourHundredOneWTokenIsNotCorrect;
+            return EnumDataForLoginVM.fourHundredOneWTokenIsNotCorrect;
         }
         if(this.isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax) {
-            return EnumDataForLoginView.fourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax;
+            return EnumDataForLoginVM.fourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax;
         }
-        return EnumDataForLoginView.success;
+        return EnumDataForLoginVM.success;
     }
 
 
@@ -43,17 +44,14 @@ export class DataForLoginView extends BaseDataForNamed<EnumDataForLoginView> {
                 return [
                     404,
                     {
-                        message: "404 (Not Found) This user does not exist",
-                        q: "lol",
-                        w: "+lol"
+                        message: "404 (Not Found) The server has not found anything matching the Request-URI.",
                     }
                 ];
             case "401":
                 return [
                     401,
                     {
-                        message: "401 (Unauthorized) Wrong password",
-                        additionalMessage: "lol, write password in note app"
+                        message: "401 (Unauthorized) The request requires user authentication.",
                     }
                 ];
             default:
@@ -71,10 +69,11 @@ export class DataForLoginView extends BaseDataForNamed<EnumDataForLoginView> {
     }
 
     public isWhereNotEqualsTokenByAPIParameterAuthorization(): boolean {
-        return this.authorization != KeysAPIUtility.aPIQQToken;
+        return AlgorithmsUtility.getStringWhereReplaceBearerFromAuthorization(this.authorization) != KeysAPIUtility.aPIQQToken;
     }
 
-    public isWhereEqualsNullParametersUsernameAndPassword(): boolean {
-        return this.username == null || this.password == null;
+    public isWhereEqualsNullWEmptyParametersUsernameAndPassword(): boolean {
+        return this.username == null || this.password == null 
+            || this.username == "" || this.password == "";
     }
 }
