@@ -1,27 +1,25 @@
 import { BaseNamedState, DefaultState, EnumRWTMode, NamedCallback, RWTMode, debugPrint } from "library_architecture_mvvm_modify_javascript";
-import { EnumDataForUserVM } from "./enum_data_for_user_vm";
-import { DataForUserVM } from "./data_for_user_vm";
+import { EnumDataForExampleVM } from "./enum_data_for_example_vm";
+import { DataForExampleVM } from "./data_for_example_vm";
 import { KeysSuccessUtility } from "../../named_utility/keys_success_utility";
-import { User } from "../../model/user/user";
 import { KeysExceptionUtility } from "../../named_utility/keys_exception_utility";
 
-export class UserVM {
+export class ExampleVM {
     // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
     // NamedUtility
     
     // Main objects
-    private readonly namedState: BaseNamedState<DataForUserVM>;
+    private readonly namedState: BaseNamedState<DataForExampleVM>;
     private readonly rwtMode: RWTMode;
 
-     public constructor(
-        authorization: string, 
-        username: string, 
+    public constructor(
+        authorization: string,
         callbackWException: (list: Array<any>) => void,
         callbackWFourHundredOneWYouMustSpecifyAuthorization: () => void,
         callbackWFourHundredOneWTokenIsNotCorrect: () => void,
         callbackWSuccess: (json: {}) => void) 
     {
-        this.namedState = new DefaultState<DataForUserVM>(new DataForUserVM(false,authorization,username,new User("",""),false,false));
+        this.namedState = new DefaultState<DataForExampleVM>(new DataForExampleVM(false,authorization,false,false));
         this.rwtMode = new RWTMode(
             EnumRWTMode.test,
             [
@@ -40,10 +38,6 @@ export class UserVM {
                     if(isWhereNotEqualsTokenByAPIParameterAuthorization) {
                         return this.firstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization();
                     }
-                    // Simulation get "User" from "username"
-                    const user = new User("62d2ff5d-af0f-46bd-87db-990284b140e2",this.namedState.getDataForNamed.username);
-                    await new Promise(resolve => setTimeout(resolve,1000));
-                    this.namedState.getDataForNamed.user = user.getClone;
                     return KeysSuccessUtility.sUCCESS;
                 }),
             ]
@@ -58,20 +52,20 @@ export class UserVM {
         callbackWSuccess: (json: {}) => void): Promise<void> 
      {
         const result = await this.rwtMode.getNamedCallbackFromName("init").callback();
-        debugPrint("UserVM: " + result);
+        debugPrint("ExampleVM: " + result);
         const dataForNamed = this.namedState.getDataForNamed;
         switch(dataForNamed.getEnumDataForNamed) {
-            case EnumDataForUserVM.exception:
+            case EnumDataForExampleVM.exception:
                 callbackWException(dataForNamed.getArrayWhereSwitchAndTwoElementsParameterExceptionController);
                 break;
-            case EnumDataForUserVM.fourHundredOneWYouMustSpecifyAuthorization:
+            case EnumDataForExampleVM.fourHundredOneWYouMustSpecifyAuthorization:
                 callbackWFourHundredOneWYouMustSpecifyAuthorization();
                 break;
-            case EnumDataForUserVM.fourHundredOneWTokenIsNotCorrect:
+            case EnumDataForExampleVM.fourHundredOneWTokenIsNotCorrect:
                 callbackWFourHundredOneWTokenIsNotCorrect();
                 break;
-            case EnumDataForUserVM.success:
-                callbackWSuccess(dataForNamed.getJSONParameterUser);
+            case EnumDataForExampleVM.success:
+                callbackWSuccess(dataForNamed.getJSON);
                 break;
             default:
                 break;      
@@ -80,11 +74,11 @@ export class UserVM {
 
     private async firstQQInitQQIsWhereEqualsNullParameterAuthorization(): Promise<string> {
         this.namedState.getDataForNamed.isFourHundredOneWYouMustSpecifyAuthorization = true;
-        return KeysExceptionUtility.userVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization;
+        return KeysExceptionUtility.exampleVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization;
     }
 
     private async firstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization(): Promise<string> {
         this.namedState.getDataForNamed.isFourHundredOneWTokenIsNotCorrect = true;
-        return KeysExceptionUtility.userVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization;
+        return KeysExceptionUtility.exampleVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization;
     }
 }

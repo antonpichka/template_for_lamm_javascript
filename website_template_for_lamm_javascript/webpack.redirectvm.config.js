@@ -1,7 +1,8 @@
 module.exports = {
     mode: "development",
     entry: {
-        other_redirect_vm: "./public/src/named_utility/named_redirect_vm/other_redirect_vm/other_redirect_vm.ts",
+      example_redirect_vm: "./public/src/named_utility/named_redirect_vm/example_redirect_vm/example_redirect_vm.ts",
+      other_redirect_vm: "./public/src/named_utility/named_redirect_vm/other_redirect_vm/other_redirect_vm.ts",
     },
     devtool: "inline-source-map",
     module: {

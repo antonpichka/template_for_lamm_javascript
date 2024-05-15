@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { LoginVM }  = require("./dist/login_vm.js");
+const { ExampleVM } = require("./dist/example_vm.js");
 const { SearchVM } = require("./dist/search_vm.js");
-const { UserVM } = require("./dist/user_vm.js");
+const { UserUsernameVM } = require("./dist/user_username_vm.js");
 
 router.post("/login", (req,res) => {
   const authorization = req.header("Authorization");
@@ -32,6 +33,28 @@ router.post("/login", (req,res) => {
     },
     ()=>{
       res.status(200).json({});
+    });
+});
+
+router.get("/example", (req, res) => {
+  const authorization = req.header("Authorization");
+  new ExampleVM(
+    authorization,
+    (list)=>{
+      res.status(list[0]).json(list[1]);
+    },
+    ()=>{
+      res.status(401).json({
+        message: "401 (Unauthorized) You must specify 'Authorization'"
+      });
+    },
+    ()=>{
+      res.status(401).json({  
+        message: "401 (Unauthorized) Token is not correct."
+      });
+    },
+    (json)=>{
+      res.status(200).json(json);
     });
 });
 
@@ -67,7 +90,7 @@ router.get("/search", (req, res) => {
 router.get("/user/:username", (req, res) => {
   const authorization = req.header("Authorization");
   const username = req.params.username;
-  new UserVM(
+  new UserUsernameVM(
     authorization,
     username,
     (list)=>{

@@ -1,4 +1,4 @@
-export enum EnumDataForUserVM {
+export enum EnumDataForUserUsernameVM {
     exception,
     fourHundredOneWYouMustSpecifyAuthorization,
     fourHundredOneWTokenIsNotCorrect,

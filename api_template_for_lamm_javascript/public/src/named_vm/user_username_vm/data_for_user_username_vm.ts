@@ -1,10 +1,10 @@
 import { BaseDataForNamed } from "library_architecture_mvvm_modify_javascript";
-import { EnumDataForUserVM } from "./enum_data_for_user_vm";
+import { EnumDataForUserUsernameVM } from "./enum_data_for_user_username_vm";
 import { KeysAPIUtility } from "../../named_utility/keys_api_utility";
 import { AlgorithmsUtility } from "../../named_utility/algorithms_utility";
 import { User } from "../../model/user/user";
 
-export class DataForUserVM extends BaseDataForNamed<EnumDataForUserVM> {
+export class DataForUserUsernameVM extends BaseDataForNamed<EnumDataForUserUsernameVM> {
     public readonly authorization: string;
     public readonly username: string;
     public user: User;
@@ -20,17 +20,17 @@ export class DataForUserVM extends BaseDataForNamed<EnumDataForUserVM> {
         this.isFourHundredOneWTokenIsNotCorrect = isFourHundredOneWTokenIsNotCorrect;
     }
 
-    public override get getEnumDataForNamed(): EnumDataForUserVM {
+    public override get getEnumDataForNamed(): EnumDataForUserUsernameVM {
         if(this.exceptionController.isWhereNotEqualsNullParameterException()) {
-            return EnumDataForUserVM.exception;
+            return EnumDataForUserUsernameVM.exception;
         }
         if(this.isFourHundredOneWYouMustSpecifyAuthorization) {
-            return EnumDataForUserVM.fourHundredOneWYouMustSpecifyAuthorization;
+            return EnumDataForUserUsernameVM.fourHundredOneWYouMustSpecifyAuthorization;
         }
         if(this.isFourHundredOneWTokenIsNotCorrect) {
-            return EnumDataForUserVM.fourHundredOneWTokenIsNotCorrect;
+            return EnumDataForUserUsernameVM.fourHundredOneWTokenIsNotCorrect;
         }
-        return EnumDataForUserVM.success;
+        return EnumDataForUserUsernameVM.success;
     }
 
 
