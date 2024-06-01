@@ -4,19 +4,19 @@ export class KeysExceptionUtility {
     /* Qw */
     public static readonly qwQQGetStringWhereIsEmptyParameterUsername = "qwQQGetStringWhereIsEmptyParameterUsername";
     /* ExampleVM */
-    public static readonly exampleVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization = "exampleVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization";
-    public static readonly exampleVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "exampleVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
+    public static readonly exampleVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization = "exampleVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization";
+    public static readonly exampleVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "exampleVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
     /* LoginVM */
-    public static readonly loginVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization = "loginVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization";
-    public static readonly loginVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "loginVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
-    public static readonly loginVMQQFirstQQInitQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword = "loginVMQQFirstQQInitQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword";
+    public static readonly loginVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization = "loginVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization";
+    public static readonly loginVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "loginVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
+    public static readonly loginVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword = "loginVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword";
     /* SearchVM */
-    public static readonly searchVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization = "searchVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization";
-    public static readonly searchVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "searchVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
-    public static readonly searchVMQQFirstQQInitQQIsWhereEqualsNullWEmptyParameterQ = "searchVMQQFirstQQInitQQIsWhereEqualsNullWEmptyParameterQ";
-    /* UserVM */
-    public static readonly userVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization = "userVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization";
-    public static readonly userVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "userVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
+    public static readonly searchVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization = "searchVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization";
+    public static readonly searchVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "searchVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
+    public static readonly searchVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParameterQ = "searchVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParameterQ";
+    /* UserUsernameVM */
+    public static readonly userUsernameVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization = "userUsernameVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization";
+    public static readonly userUsernameVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "userUsernameVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
     
     private constructor() {
     }

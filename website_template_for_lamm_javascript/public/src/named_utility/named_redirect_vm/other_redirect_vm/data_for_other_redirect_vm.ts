@@ -12,4 +12,9 @@ export class DataForOtherRedirectVM extends BaseDataForNamed<EnumDataForOtherRed
         }
         return EnumDataForOtherRedirectVM.success;
     }
+
+    public override toString(): string {
+        return "DataForOtherRedirectVM(isLoading: " + this.isLoading + ", " 
+            + "exceptionController: " + this.exceptionController + ")";
+    }
 }

@@ -13,11 +13,14 @@ export class DataForSearchVM extends BaseDataForNamed<EnumDataForSearchVM> {
     public isFourHundredOneWTokenIsNotCorrect: boolean;
     public isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax: boolean;
 
-    public constructor(isLoading: boolean, authorization: string, q: string, listUser: ListUser<User>) {
+    public constructor(isLoading: boolean, authorization: string, q: string, listUser: ListUser<User>, isFourHundredOneWYouMustSpecifyAuthorization: boolean, isFourHundredOneWTokenIsNotCorrect: boolean, isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax: boolean) {
         super(isLoading);
         this.authorization = authorization;
         this.q = q;
         this.listUser = listUser;
+        this.isFourHundredOneWYouMustSpecifyAuthorization = isFourHundredOneWYouMustSpecifyAuthorization;
+        this.isFourHundredOneWTokenIsNotCorrect = isFourHundredOneWTokenIsNotCorrect;
+        this.isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax = isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax;
     }
 
     public override get getEnumDataForNamed(): EnumDataForSearchVM {
@@ -34,6 +37,17 @@ export class DataForSearchVM extends BaseDataForNamed<EnumDataForSearchVM> {
             return EnumDataForSearchVM.fourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax;
         }
         return EnumDataForSearchVM.success;
+    }
+
+    public override toString(): string {
+        return "DataForSearchVM(isLoading: " + this.isLoading + ", " 
+            + "exceptionController: " + this.exceptionController + ", " 
+            + "authorization: " + this.authorization + ", " 
+            + "q: " + this.q + ", "
+            + "listUser: " + this.listUser + ", "
+            + "isFourHundredOneWYouMustSpecifyAuthorization: " + this.isFourHundredOneWYouMustSpecifyAuthorization + ", "
+            + "isFourHundredOneWTokenIsNotCorrect: " + this.isFourHundredOneWTokenIsNotCorrect + ", " 
+            + "isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax: " + this.isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax + ")";
     }
 
     public get getArrayWhereSwitchAndTwoElementsParameterExceptionController(): Array<any> {

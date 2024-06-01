@@ -15,4 +15,9 @@ export class DataForIndexVM extends BaseDataForNamed<EnumDataForIndexVM> {
         }
         return EnumDataForIndexVM.success;
     }
+
+    public override toString(): string {
+        return "DataForIndexVM(isLoading: " + this.isLoading + ", " 
+            + "exceptionController: " + this.exceptionController + ")";
+    }
 }

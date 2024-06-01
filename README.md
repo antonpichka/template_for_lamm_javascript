@@ -1,5 +1,4 @@
-- https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#architectural-objects
-- https://github.com/antonpichka/library_architecture_mvvm_modify_javascript/blob/main/library_architecture_mvvm_modify_javascript/example/index.ts
+- https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#architectural-objects   
 - https://github.com/antonpichka/library_architecture_mvvm_modify/labels
 
 ---

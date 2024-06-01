@@ -15,4 +15,9 @@ export class DataForOtherVM extends BaseDataForNamed<EnumDataForOtherVM> {
         }
         return EnumDataForOtherVM.success;
     }
+
+    public override toString(): string {
+        return "DataForOtherVM(isLoading: " + this.isLoading + ", " 
+            + "exceptionController: " + this.exceptionController + ")";
+    }
 }

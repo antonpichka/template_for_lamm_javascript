@@ -7,7 +7,10 @@ router.get("/", (_req, res) => {
 });
 
 router.get("/other", (_req, res) => {
-  // Using "OtherRedirectVM" if needs (new OtherRedirectVM(()=>{},()=>{}))
+  // Using "OtherRedirectVM" if needs. Example:
+  // - const otherRedirectVM = new OtherRedirectVM();
+  // - await otherRedirectVM.initWBuild(()=>{},()=>{});
+  // - otherRedirectVM.dispose();
   res.sendFile(__dirname + "/public/src/named_vm/other_vm/other_vm.html");
 });
 

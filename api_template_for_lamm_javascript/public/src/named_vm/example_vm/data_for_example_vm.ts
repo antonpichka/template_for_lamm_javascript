@@ -28,6 +28,13 @@ export class DataForExampleVM extends BaseDataForNamed<EnumDataForExampleVM> {
         return EnumDataForExampleVM.success;
     }
 
+    public override toString(): string {
+        return "DataForExampleVM(isLoading: " + this.isLoading + ", " 
+            + "exceptionController: " + this.exceptionController + ", " 
+            + "authorization: " + this.authorization + ", " 
+            + "isFourHundredOneWYouMustSpecifyAuthorization: " + this.isFourHundredOneWYouMustSpecifyAuthorization + ", "
+            + "isFourHundredOneWTokenIsNotCorrect: " + this.isFourHundredOneWTokenIsNotCorrect + ")";
+    }
 
     public get getArrayWhereSwitchAndTwoElementsParameterExceptionController(): Array<any> {
         switch(this.exceptionController.getKeyParameterException) {

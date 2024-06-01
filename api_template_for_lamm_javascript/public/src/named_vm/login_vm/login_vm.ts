@@ -14,95 +14,93 @@ export class LoginVM {
     private readonly namedState: BaseNamedState<DataForLoginVM>;
     private readonly rwtMode: RWTMode;
 
-     public constructor(
+    public constructor(
         authorization: string, 
         username: string, 
-        password: string, 
-        callbackWException: (list: Array<any>) => void,
-        callbackWFourHundredOneWYouMustSpecifyAuthorization: () => void,
-        callbackWFourHundredOneWTokenIsNotCorrect: () => void,
-        callbackWFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax: () => void,
-        callbackWSuccess: () => void) 
+        password: string) 
     {
         this.namedState = new DefaultState<DataForLoginVM>(new DataForLoginVM(false,authorization,username,password,false,false,false));
         this.rwtMode = new RWTMode(
             EnumRWTMode.test,
             [
-                new NamedCallback("init",async () => {
-                    await new Promise(resolve => setTimeout(resolve,1000));
-                    return KeysSuccessUtility.sUCCESS;
-                }),
+                new NamedCallback("init",this.initReleaseCallback),
             ],
             [
-                new NamedCallback("init",async () => {
-                    const isWhereEqualsNullParameterAuthorization = this.namedState.getDataForNamed.isWhereEqualsNullParameterAuthorization();
-                    if(isWhereEqualsNullParameterAuthorization) {
-                        return this.firstQQInitQQIsWhereEqualsNullParameterAuthorization();
-                    }
-                    const isWhereNotEqualsTokenByAPIParameterAuthorization = this.namedState.getDataForNamed.isWhereNotEqualsTokenByAPIParameterAuthorization();
-                    if(isWhereNotEqualsTokenByAPIParameterAuthorization) {
-                        return this.firstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization();
-                    }
-                    const isWhereEqualsNullWEmptyParametersUsernameAndPassword = this.namedState.getDataForNamed.isWhereEqualsNullWEmptyParametersUsernameAndPassword();
-                    if(isWhereEqualsNullWEmptyParametersUsernameAndPassword) {
-                        return this.firstQQInitQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword();
-                    }
-                    // Simulation get "User" from "username"
-                    const user = new User("62d2ff5d-af0f-46bd-87db-990284b140e2",this.namedState.getDataForNamed.username);
-                    await new Promise(resolve => setTimeout(resolve,1000));
-                    // Simulation get "SecurityUser" from "uniqueIdByUser","password"
-                    new SecurityUser(user.uniqueId,this.namedState.getDataForNamed.password);
-                    await new Promise(resolve => setTimeout(resolve,1000));
-                    return KeysSuccessUtility.sUCCESS;
-                }),
+                new NamedCallback("init",this.initTestCallback),
             ]
         );
-        this.initWBuild(callbackWException,callbackWFourHundredOneWYouMustSpecifyAuthorization,callbackWFourHundredOneWTokenIsNotCorrect,callbackWFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax,callbackWSuccess);
-     }
+    }
      
-     private async initWBuild(
+    public async initWBuild(
         callbackWException: (list: Array<any>) => void,
         callbackWFourHundredOneWYouMustSpecifyAuthorization: () => void,
         callbackWFourHundredOneWTokenIsNotCorrect: () => void,
         callbackWFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax: () => void,
         callbackWSuccess: () => void): Promise<void> 
-     {
-        const result = await this.rwtMode.getNamedCallbackFromName("init").callback();
-        debugPrint("LoginVM: " + result);
+    {
+        const callback = await this.rwtMode.getNamedCallbackFromName("init").callback();
+        debugPrint("LoginVM: " + callback);
         const dataForNamed = this.namedState.getDataForNamed;
         switch(dataForNamed.getEnumDataForNamed) {
             case EnumDataForLoginVM.exception:
-                callbackWException(dataForNamed.getArrayWhereSwitchAndTwoElementsParameterExceptionController);
-                break;
+                return callbackWException(dataForNamed.getArrayWhereSwitchAndTwoElementsParameterExceptionController);
             case EnumDataForLoginVM.fourHundredOneWYouMustSpecifyAuthorization:
-                callbackWFourHundredOneWYouMustSpecifyAuthorization();
-                break;
+                return callbackWFourHundredOneWYouMustSpecifyAuthorization();
             case EnumDataForLoginVM.fourHundredOneWTokenIsNotCorrect:
-                callbackWFourHundredOneWTokenIsNotCorrect();
-                break;
+                return callbackWFourHundredOneWTokenIsNotCorrect();
             case EnumDataForLoginVM.fourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax:
-                callbackWFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax();
-                break;
+                return callbackWFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax();
             case EnumDataForLoginVM.success:
-                callbackWSuccess();
-                break;
+                return callbackWSuccess();
             default:
-                break;      
+                return;     
         }
     }
 
-    private async firstQQInitQQIsWhereEqualsNullParameterAuthorization(): Promise<string> {
+    public dispose(): void 
+    {
+        this.namedState.dispose();        
+    }
+
+    private initReleaseCallback = async (): Promise<string> => {
+        await new Promise(resolve => setTimeout(resolve,1000));
+        return KeysSuccessUtility.sUCCESS;
+    }
+
+    private initTestCallback = async (): Promise<string> => {
+        const isWhereEqualsNullParameterAuthorization = this.namedState.getDataForNamed.isWhereEqualsNullParameterAuthorization();
+        if(isWhereEqualsNullParameterAuthorization) {
+            return this.firstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization();
+        }
+        const isWhereNotEqualsTokenByAPIParameterAuthorization = this.namedState.getDataForNamed.isWhereNotEqualsTokenByAPIParameterAuthorization();
+        if(isWhereNotEqualsTokenByAPIParameterAuthorization) {
+            return this.firstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization();
+        }
+        const isWhereEqualsNullWEmptyParametersUsernameAndPassword = this.namedState.getDataForNamed.isWhereEqualsNullWEmptyParametersUsernameAndPassword();
+        if(isWhereEqualsNullWEmptyParametersUsernameAndPassword) {
+            return this.firstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword();
+        }
+        // Simulation get "User" from "username"
+        const user = new User("62d2ff5d-af0f-46bd-87db-990284b140e2",this.namedState.getDataForNamed.username);
+        await new Promise(resolve => setTimeout(resolve,1000));
+        // Simulation get "SecurityUser" from "uniqueIdByUser","password"
+        new SecurityUser(user.uniqueId,this.namedState.getDataForNamed.password);
+        await new Promise(resolve => setTimeout(resolve,1000));
+        return KeysSuccessUtility.sUCCESS;
+    }
+
+    private async firstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization(): Promise<string> {
         this.namedState.getDataForNamed.isFourHundredOneWYouMustSpecifyAuthorization = true;
-        return KeysExceptionUtility.loginVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization;
+        return KeysExceptionUtility.loginVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization;
     }
 
-    private async firstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization(): Promise<string> {
+    private async firstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization(): Promise<string> {
         this.namedState.getDataForNamed.isFourHundredOneWTokenIsNotCorrect = true;
-        return KeysExceptionUtility.loginVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization;
+        return KeysExceptionUtility.loginVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization;
     }
 
-    private async firstQQInitQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword(): Promise<string> {
+    private async firstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword(): Promise<string> {
         this.namedState.getDataForNamed.isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax = true;
-        return KeysExceptionUtility.loginVMQQFirstQQInitQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword;
+        return KeysExceptionUtility.loginVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword;
     }
 }

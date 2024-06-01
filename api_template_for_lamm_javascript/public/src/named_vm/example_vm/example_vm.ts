@@ -12,73 +12,72 @@ export class ExampleVM {
     private readonly namedState: BaseNamedState<DataForExampleVM>;
     private readonly rwtMode: RWTMode;
 
-    public constructor(
-        authorization: string,
-        callbackWException: (list: Array<any>) => void,
-        callbackWFourHundredOneWYouMustSpecifyAuthorization: () => void,
-        callbackWFourHundredOneWTokenIsNotCorrect: () => void,
-        callbackWSuccess: (json: {}) => void) 
+    public constructor(authorization: string) 
     {
         this.namedState = new DefaultState<DataForExampleVM>(new DataForExampleVM(false,authorization,false,false));
         this.rwtMode = new RWTMode(
             EnumRWTMode.test,
             [
-                new NamedCallback("init",async () => {
-                    await new Promise(resolve => setTimeout(resolve,1000));
-                    return KeysSuccessUtility.sUCCESS;
-                }),
+                new NamedCallback("init",this.initReleaseCallback),
             ],
             [
-                new NamedCallback("init",async () => {
-                    const isWhereEqualsNullParameterAuthorization = this.namedState.getDataForNamed.isWhereEqualsNullParameterAuthorization();
-                    if(isWhereEqualsNullParameterAuthorization) {
-                        return this.firstQQInitQQIsWhereEqualsNullParameterAuthorization();
-                    }
-                    const isWhereNotEqualsTokenByAPIParameterAuthorization = this.namedState.getDataForNamed.isWhereNotEqualsTokenByAPIParameterAuthorization();
-                    if(isWhereNotEqualsTokenByAPIParameterAuthorization) {
-                        return this.firstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization();
-                    }
-                    return KeysSuccessUtility.sUCCESS;
-                }),
+                new NamedCallback("init",this.initTestCallback),
             ]
         );
-        this.initWBuild(callbackWException,callbackWFourHundredOneWYouMustSpecifyAuthorization,callbackWFourHundredOneWTokenIsNotCorrect,callbackWSuccess);
-     }
+    }
      
-     private async initWBuild(
+    public async initWBuild(
         callbackWException: (list: Array<any>) => void,
         callbackWFourHundredOneWYouMustSpecifyAuthorization: () => void,
         callbackWFourHundredOneWTokenIsNotCorrect: () => void,
         callbackWSuccess: (json: {}) => void): Promise<void> 
-     {
-        const result = await this.rwtMode.getNamedCallbackFromName("init").callback();
-        debugPrint("ExampleVM: " + result);
+    {
+        const callback = await this.rwtMode.getNamedCallbackFromName("init").callback();
+        debugPrint("ExampleVM: " + callback);
         const dataForNamed = this.namedState.getDataForNamed;
         switch(dataForNamed.getEnumDataForNamed) {
             case EnumDataForExampleVM.exception:
-                callbackWException(dataForNamed.getArrayWhereSwitchAndTwoElementsParameterExceptionController);
-                break;
+                return callbackWException(dataForNamed.getArrayWhereSwitchAndTwoElementsParameterExceptionController);
             case EnumDataForExampleVM.fourHundredOneWYouMustSpecifyAuthorization:
-                callbackWFourHundredOneWYouMustSpecifyAuthorization();
-                break;
+                return callbackWFourHundredOneWYouMustSpecifyAuthorization();
             case EnumDataForExampleVM.fourHundredOneWTokenIsNotCorrect:
-                callbackWFourHundredOneWTokenIsNotCorrect();
-                break;
+                return callbackWFourHundredOneWTokenIsNotCorrect();
             case EnumDataForExampleVM.success:
-                callbackWSuccess(dataForNamed.getJSON);
-                break;
+                return callbackWSuccess(dataForNamed.getJSON);
             default:
-                break;      
+                return;   
         }
     }
 
-    private async firstQQInitQQIsWhereEqualsNullParameterAuthorization(): Promise<string> {
-        this.namedState.getDataForNamed.isFourHundredOneWYouMustSpecifyAuthorization = true;
-        return KeysExceptionUtility.exampleVMQQFirstQQInitQQIsWhereEqualsNullParameterAuthorization;
+    public dispose(): void 
+    {
+        this.namedState.dispose();        
     }
 
-    private async firstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization(): Promise<string> {
+    private initReleaseCallback = async (): Promise<string> => {
+        await new Promise(resolve => setTimeout(resolve,1000));
+        return KeysSuccessUtility.sUCCESS;
+    }
+
+    private initTestCallback = async (): Promise<string> => {
+        const isWhereEqualsNullParameterAuthorization = this.namedState.getDataForNamed.isWhereEqualsNullParameterAuthorization();
+        if(isWhereEqualsNullParameterAuthorization) {
+            return this.firstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization();
+        }
+        const isWhereNotEqualsTokenByAPIParameterAuthorization = this.namedState.getDataForNamed.isWhereNotEqualsTokenByAPIParameterAuthorization();
+        if(isWhereNotEqualsTokenByAPIParameterAuthorization) {
+            return this.firstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization();
+        }
+        return KeysSuccessUtility.sUCCESS;
+    }
+
+    private async firstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization(): Promise<string> {
+        this.namedState.getDataForNamed.isFourHundredOneWYouMustSpecifyAuthorization = true;
+        return KeysExceptionUtility.exampleVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization;
+    }
+
+    private async firstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization(): Promise<string> {
         this.namedState.getDataForNamed.isFourHundredOneWTokenIsNotCorrect = true;
-        return KeysExceptionUtility.exampleVMQQFirstQQInitQQIsWhereNotEqualsTokenByAPIParameterAuthorization;
+        return KeysExceptionUtility.exampleVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization;
     }
 }

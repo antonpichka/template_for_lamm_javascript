@@ -11,39 +11,48 @@ export class ExampleRedirectVM {
     private readonly namedState: BaseNamedState<DataForExampleRedirectVM>;
     private readonly rwtMode: RWTMode;
 
-    public constructor(callbackWException: () => void,callbackWSuccess: () => void) {
+    public constructor() {
         this.namedState = new DefaultState<DataForExampleRedirectVM>(new DataForExampleRedirectVM(false));
         this.rwtMode = new RWTMode(
             EnumRWTMode.test,
             [
-                new NamedCallback("init",async () => {
-                    await new Promise(resolve => setTimeout(resolve,1000));
-                    return KeysSuccessUtility.sUCCESS;
-                }),
+                new NamedCallback("init",this.initReleaseCallback),
             ],
             [
-                new NamedCallback("init",async () => {
-                    await new Promise(resolve => setTimeout(resolve,1000));
-                    return KeysSuccessUtility.sUCCESS;
-                }),
+                new NamedCallback("init",this.initTestCallback),
             ]
         );
-        this.initWBuild(callbackWException,callbackWSuccess);
     }
      
-    private async initWBuild(callbackWException: () => void,callbackWSuccess: () => void): Promise<void> {
-        const result = await this.rwtMode.getNamedCallbackFromName("init").callback();
-        debugPrint("ExampleRedirectVM: " + result);
+    public async initWBuild(
+        callbackWException: () => void,
+        callbackWSuccess: () => void): Promise<void>
+    {
+        const callback = await this.rwtMode.getNamedCallbackFromName("init").callback();
+        debugPrint("ExampleRedirectVM: " + callback);
         const dataForNamed = this.namedState.getDataForNamed;
         switch(dataForNamed.getEnumDataForNamed) {
             case EnumDataForExampleRedirectVM.exception:
-                callbackWException();
-                break;
+                return callbackWException();
             case EnumDataForExampleRedirectVM.success:
-                callbackWSuccess();
-                break;
+                return callbackWSuccess();
             default:
-                break;      
+                return;     
         }
+    }
+
+    public dispose(): void 
+    {
+        this.namedState.dispose();        
+    }
+
+    private initReleaseCallback = async (): Promise<string> => {
+        await new Promise(resolve => setTimeout(resolve,1000));
+        return KeysSuccessUtility.sUCCESS;
+    }
+
+    private initTestCallback = async (): Promise<string> => {
+        await new Promise(resolve => setTimeout(resolve,1000));
+        return KeysSuccessUtility.sUCCESS;
     }
 }

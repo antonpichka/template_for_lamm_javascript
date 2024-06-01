@@ -17,7 +17,7 @@ export class ListSecurityUser<T extends SecurityUser> extends BaseListModel<T> {
     public override toString(): string {
         let strListModel = "\n";
         for(const itemModel of this.listModel) {
-            strListModel += itemModel.toString() + ",\n";
+            strListModel += itemModel + ",\n";
         }
         return "ListSecurityUser(listModel: [" + strListModel + "])";
     }

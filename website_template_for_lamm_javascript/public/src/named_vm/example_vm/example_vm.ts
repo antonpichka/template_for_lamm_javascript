@@ -16,18 +16,10 @@ class ExampleVM {
         this.rwtMode = new RWTMode(
             EnumRWTMode.test,
             [
-                new NamedCallback("init",async () => {
-                    await new Promise(resolve => setTimeout(resolve,1000));
-                    this.namedStreamWState.getDataForNamed.isLoading = false;
-                    return KeysSuccessUtility.sUCCESS;
-                }),
+                new NamedCallback("init",this.initReleaseCallback),
             ],
             [
-                new NamedCallback("init",async () => {
-                    await new Promise(resolve => setTimeout(resolve,1000));
-                    this.namedStreamWState.getDataForNamed.isLoading = false;
-                    return KeysSuccessUtility.sUCCESS;
-                }),
+                new NamedCallback("init",this.initTestCallback),
             ]
         );
         this.init();
@@ -35,11 +27,11 @@ class ExampleVM {
     }
 
     private async init(): Promise<void> {
-        this.namedStreamWState.listenStreamDataForNamedFromCallback((data) => {
+        this.namedStreamWState.listenStreamDataForNamedFromCallback((_data) => {
             this.build();
         });
-        const result = await this.rwtMode.getNamedCallbackFromName("init").callback();
-        debugPrint("ExampleVM: " + result);
+        const callback = await this.rwtMode.getNamedCallbackFromName("init").callback();
+        debugPrint("ExampleVM: " + callback);
         this.namedStreamWState.notifyStreamDataForNamed();
     }
 
@@ -55,6 +47,18 @@ class ExampleVM {
             default:
                 break;      
         }
+    }
+
+    private initReleaseCallback = async (): Promise<string> => {
+        await new Promise(resolve => setTimeout(resolve,1000));
+        this.namedStreamWState.getDataForNamed.isLoading = false;
+        return KeysSuccessUtility.sUCCESS;
+    }
+
+    private initTestCallback = async (): Promise<string> => {
+        await new Promise(resolve => setTimeout(resolve,1000));
+        this.namedStreamWState.getDataForNamed.isLoading = false;
+        return KeysSuccessUtility.sUCCESS;
     }
 }
 new ExampleVM();

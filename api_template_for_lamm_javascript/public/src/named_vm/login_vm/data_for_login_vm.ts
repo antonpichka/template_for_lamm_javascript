@@ -37,6 +37,16 @@ export class DataForLoginVM extends BaseDataForNamed<EnumDataForLoginVM> {
         return EnumDataForLoginVM.success;
     }
 
+    public override toString(): string {
+        return "DataForLoginVM(isLoading: " + this.isLoading + ", " 
+            + "exceptionController: " + this.exceptionController + ", " 
+            + "authorization: " + this.authorization + ", " 
+            + "username: " + this.username + ", "
+            + "password: " + this.password + ", "
+            + "isFourHundredOneWYouMustSpecifyAuthorization: " + this.isFourHundredOneWYouMustSpecifyAuthorization + ", "
+            + "isFourHundredOneWTokenIsNotCorrect: " + this.isFourHundredOneWTokenIsNotCorrect + ", " 
+            + "isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax: " + this.isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax + ")";
+    }
 
     public get getArrayWhereSwitchAndTwoElementsParameterExceptionController(): Array<any> {
         switch(this.exceptionController.getKeyParameterException) {

@@ -15,4 +15,9 @@ export class DataForNotFoundVM extends BaseDataForNamed<EnumDataForNotFoundVM> {
         }
         return EnumDataForNotFoundVM.success;
     }
+
+    public override toString(): string {
+        return "DataForNotFoundVM(isLoading: " + this.isLoading + ", " 
+            + "exceptionController: " + this.exceptionController + ")";
+    }
 }
