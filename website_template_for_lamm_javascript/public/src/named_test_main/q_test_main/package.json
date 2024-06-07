@@ -13,7 +13,7 @@
         "webpack-cli": "^5.1.4"
     },
     "dependencies": {
-        "library_architecture_mvvm_modify_javascript": "^2.0.1",
+        "library_architecture_mvvm_modify_javascript": "^2.0.2",
         "lodash": "^4.17.21",
         "website_template_for_lamm_javascript": "file:../../../.."
     }
