@@ -1,31 +1,23 @@
-import { BaseNamedState, DefaultState, EnumRWTMode, NamedCallback, RWTMode, debugPrint } from "library_architecture_mvvm_modify_javascript";
+import { BaseNamedState, DefaultState, EnumRWTMode, ExceptionController, debugPrint } from "library_architecture_mvvm_modify_javascript";
 import { DataForSearchVM } from "./data_for_search_vm";
-import { KeysSuccessUtility } from "../../named_utility/keys_success_utility";
 import { EnumDataForSearchVM } from "./enum_data_for_search_vm";
 import { ListUser } from "../../model/user/list_user";
-import { User } from "../../model/user/user";
 import { KeysExceptionUtility } from "../../named_utility/keys_exception_utility";
+import { ReadyDataUtility } from "../../named_utility/ready_data_utility";
+import { UserRepository } from "../../model_repository/user_repository/user_repository";
 
 export class SearchVM {
-    // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
+    // ModelRepository
+    private readonly userRepository = new UserRepository(EnumRWTMode.test);
+
     // NamedUtility
     
-    // Main objects
+    // NamedStreamWState
     private readonly namedState: BaseNamedState<DataForSearchVM>;
-    private readonly rwtMode: RWTMode;
 
     public constructor(authorization: string, q: string)
     {
         this.namedState = new DefaultState<DataForSearchVM>(new DataForSearchVM(false,authorization,q,new ListUser([]),false,false,false));
-        this.rwtMode = new RWTMode(
-            EnumRWTMode.test,
-            [
-                new NamedCallback("init",this.initReleaseCallback),
-            ],
-            [
-                new NamedCallback("init",this.initTestCallback),
-            ]
-        );
     }
      
     public async initWBuild(
@@ -35,8 +27,8 @@ export class SearchVM {
         callbackWFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax: () => void,
         callbackWSuccess: (json: {}) => void): Promise<void> 
     {
-        const callback = await this.rwtMode.getNamedCallbackFromName("init").callback();
-        debugPrint("SearchVM: " + callback);  
+        const firstRequest = await this.firstRequest();
+        debugPrint("SearchVM: " + firstRequest);  
         const dataForNamed = this.namedState.getDataForNamed;
         switch(dataForNamed.getEnumDataForNamed) {
             case EnumDataForSearchVM.exception:
@@ -59,47 +51,44 @@ export class SearchVM {
         this.namedState.dispose();        
     }
 
-    private initReleaseCallback = async (): Promise<string> => {
-        await new Promise(resolve => setTimeout(resolve,1000));
-        return KeysSuccessUtility.sUCCESS;
-    }
-
-    private initTestCallback = async (): Promise<string> => {
+    private async firstRequest(): Promise<string> {
         const isWhereEqualsNullParameterAuthorization = this.namedState.getDataForNamed.isWhereEqualsNullParameterAuthorization();
         if(isWhereEqualsNullParameterAuthorization) {
-            return this.firstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization();
+            return this.firstQQFirstRequestQQIsWhereEqualsNullParameterAuthorization();
         }
         const isWhereNotEqualsTokenByAPIParameterAuthorization = this.namedState.getDataForNamed.isWhereNotEqualsTokenByAPIParameterAuthorization();
         if(isWhereNotEqualsTokenByAPIParameterAuthorization) {
-            return this.firstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization();
+            return this.firstQQFirstRequestQQIsWhereNotEqualsTokenByAPIParameterAuthorization();
         }
         const isWhereEqualsNullWEmptyParameterQ = this.namedState.getDataForNamed.isWhereEqualsNullWEmptyParameterQ();
         if(isWhereEqualsNullWEmptyParameterQ) {
-            return this.firstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParameterQ();
+            return this.firstQQFirstRequestQQIsWhereEqualsNullWEmptyParameterQ();
         }
-        // Simulation get "ListUser" from "q"
-        const listUser = new ListUser(
-            [
-                new User("b5f9b56a-be60-4732-ba75-e8f4baac8c39",this.namedState.getDataForNamed.q),
-                new User("d1fe0703-5a4a-469e-9007-734af71224a6",this.namedState.getDataForNamed.q + "w")
-            ]);  
-        await new Promise(resolve => setTimeout(resolve,1000));
-        this.namedState.getDataForNamed.listUser = listUser.getClone;
-        return KeysSuccessUtility.sUCCESS;
+        const getListUserWhereTheSearchWasPerformedFromQParameterOne = await this.userRepository.getListUserWhereTheSearchWasPerformedFromQParameterOne(this.namedState.getDataForNamed.q);
+        if(getListUserWhereTheSearchWasPerformedFromQParameterOne.exceptionController.isWhereNotEqualsNullParameterException()) {
+            return this.firstQQFirstRequestQQGetListUserWhereTheSearchWasPerformedFromQParameterOne(getListUserWhereTheSearchWasPerformedFromQParameterOne.exceptionController);
+        }
+        this.namedState.getDataForNamed.listUser = getListUserWhereTheSearchWasPerformedFromQParameterOne.parameter.getClone;
+        return ReadyDataUtility.success;
     }
 
-    private async firstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization(): Promise<string> {
+    private async firstQQFirstRequestQQIsWhereEqualsNullParameterAuthorization(): Promise<string> {
         this.namedState.getDataForNamed.isFourHundredOneWYouMustSpecifyAuthorization = true;
-        return KeysExceptionUtility.searchVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization;
+        return KeysExceptionUtility.searchVMQQFirstQQFirstRequestQQIsWhereEqualsNullParameterAuthorization;
     }
 
-    private async firstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization(): Promise<string> {
+    private async firstQQFirstRequestQQIsWhereNotEqualsTokenByAPIParameterAuthorization(): Promise<string> {
         this.namedState.getDataForNamed.isFourHundredOneWTokenIsNotCorrect = true;
-        return KeysExceptionUtility.searchVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization;
+        return KeysExceptionUtility.searchVMQQFirstQQFirstRequestQQIsWhereNotEqualsTokenByAPIParameterAuthorization;
     }
 
-    private async firstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParameterQ(): Promise<string> {
+    private async firstQQFirstRequestQQIsWhereEqualsNullWEmptyParameterQ(): Promise<string> {
         this.namedState.getDataForNamed.isFourHundredWTheRequestCouldNotBeUnderstoodByTheServerDueToMalformedSyntax = true;
-        return KeysExceptionUtility.searchVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParameterQ;
+        return KeysExceptionUtility.searchVMQQFirstQQFirstRequestQQIsWhereEqualsNullWEmptyParameterQ;
+    }
+
+    private async firstQQFirstRequestQQGetListUserWhereTheSearchWasPerformedFromQParameterOne(exceptionController: ExceptionController): Promise<string> {
+        this.namedState.getDataForNamed.exceptionController = exceptionController;
+        return exceptionController.getKeyParameterException;
     }
 }

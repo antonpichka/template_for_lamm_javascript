@@ -1,35 +1,25 @@
-import { BaseNamedState, DefaultState, EnumRWTMode, NamedCallback, RWTMode, debugPrint } from "library_architecture_mvvm_modify_javascript";
+import { BaseNamedState, DefaultState, debugPrint } from "library_architecture_mvvm_modify_javascript";
 import { EnumDataForOtherRedirectVM } from "./enum_data_for_other_redirect_vm";
 import { DataForOtherRedirectVM } from "./data_for_other_redirect_vm";
-import { KeysSuccessUtility } from "../../keys_success_utility";
+import { ReadyDataUtility } from "../../ready_data_utility";
 
 export class OtherRedirectVM {
-    // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
+    // ModelRepository
     // NamedUtility
     
-    // Main objects
+    // NamedStreamWState
     private readonly namedState: BaseNamedState<DataForOtherRedirectVM>;
-    private readonly rwtMode: RWTMode;
 
     public constructor() {
         this.namedState = new DefaultState<DataForOtherRedirectVM>(new DataForOtherRedirectVM(false));
-        this.rwtMode = new RWTMode(
-            EnumRWTMode.test,
-            [
-                new NamedCallback("init",this.initReleaseCallback),
-            ],
-            [
-                new NamedCallback("init",this.initTestCallback),
-            ]
-        );
     }
      
     public async initWBuild(
         callbackWException: () => void,
         callbackWSuccess: () => void): Promise<void>
     {
-        const callback = await this.rwtMode.getNamedCallbackFromName("init").callback();
-        debugPrint("OtherRedirectVM: " + callback);
+        const firstRequest= await this.firstRequest();
+        debugPrint("OtherRedirectVM: " + firstRequest);
         const dataForNamed = this.namedState.getDataForNamed;
         switch(dataForNamed.getEnumDataForNamed) {
             case EnumDataForOtherRedirectVM.exception:
@@ -46,13 +36,7 @@ export class OtherRedirectVM {
         this.namedState.dispose();        
     }
 
-    private initReleaseCallback = async (): Promise<string> => {
-        await new Promise(resolve => setTimeout(resolve,1000));
-        return KeysSuccessUtility.sUCCESS;
-    }
-
-    private initTestCallback = async (): Promise<string> => {
-        await new Promise(resolve => setTimeout(resolve,1000));
-        return KeysSuccessUtility.sUCCESS;
+    private async firstRequest(): Promise<string> {
+        return ReadyDataUtility.success;
     }
 }

@@ -1,27 +1,17 @@
-import { BaseNamedStreamWState, DefaultStreamWState, EnumRWTMode, NamedCallback, RWTMode, debugPrint } from "library_architecture_mvvm_modify_javascript";
+import { BaseNamedStreamWState, DefaultStreamWState, debugPrint } from "library_architecture_mvvm_modify_javascript";
 import { EnumDataForIndexVM } from "./enum_data_for_index_vm";
 import { DataForIndexVM } from "./data_for_index_vm";
-import { KeysSuccessUtility } from "../../named_utility/keys_success_utility";
+import { ReadyDataUtility } from "../../named_utility/ready_data_utility";
 
 class IndexVM {
-    // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
+    // ModelRepository
     // NamedUtility
     
-    // Main objects
+    // NamedStreamWState
     private readonly namedStreamWState: BaseNamedStreamWState<DataForIndexVM>;
-    private readonly rwtMode: RWTMode;
 
     public constructor() {
         this.namedStreamWState = new DefaultStreamWState<DataForIndexVM>(new DataForIndexVM(true));
-        this.rwtMode = new RWTMode(
-            EnumRWTMode.test,
-            [
-                new NamedCallback("init",this.initReleaseCallback),
-            ],
-            [
-                new NamedCallback("init",this.initTestCallback),
-            ]
-        );
         this.init();
         this.build();
     }
@@ -30,8 +20,8 @@ class IndexVM {
         this.namedStreamWState.listenStreamDataForNamedFromCallback((_data) => {
             this.build();
         });
-        const callback = await this.rwtMode.getNamedCallbackFromName("init").callback();
-        debugPrint("IndexVM: " + callback);
+        const firstRequest= await this.firstRequest();
+        debugPrint("IndexVM: " + firstRequest);
         this.namedStreamWState.notifyStreamDataForNamed();
     }
 
@@ -57,16 +47,9 @@ class IndexVM {
         }
     }
 
-    private initReleaseCallback = async (): Promise<string> => {
-        await new Promise(resolve => setTimeout(resolve,1000));
+    private async firstRequest(): Promise<string> {
         this.namedStreamWState.getDataForNamed.isLoading = false;
-        return KeysSuccessUtility.sUCCESS;
-    }
-
-    private initTestCallback = async (): Promise<string> => {
-        await new Promise(resolve => setTimeout(resolve,1000));
-        this.namedStreamWState.getDataForNamed.isLoading = false;
-        return KeysSuccessUtility.sUCCESS;
+        return ReadyDataUtility.success;
     }
 }
 new IndexVM();

@@ -1,27 +1,17 @@
-import { BaseNamedStreamWState, DefaultStreamWState, EnumRWTMode, NamedCallback, RWTMode, debugPrint } from "library_architecture_mvvm_modify_javascript";
+import { BaseNamedStreamWState, DefaultStreamWState, debugPrint } from "library_architecture_mvvm_modify_javascript";
 import { EnumDataForOtherVM } from "./enum_data_for_other_vm";
 import { DataForOtherVM } from "./data_for_other_vm";
-import { KeysSuccessUtility } from "../../named_utility/keys_success_utility";
+import { ReadyDataUtility } from "../../named_utility/ready_data_utility";
 
 class OtherVM {
-    // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
+    // ModelRepository
     // NamedUtility
     
-    // Main objects
+    // NamedStreamWState
     private readonly namedStreamWState: BaseNamedStreamWState<DataForOtherVM>;
-    private readonly rwtMode: RWTMode;
 
     public constructor() {
         this.namedStreamWState = new DefaultStreamWState<DataForOtherVM>(new DataForOtherVM(true));
-        this.rwtMode = new RWTMode(
-            EnumRWTMode.test,
-            [
-                new NamedCallback("init",this.initReleaseCallback),
-            ],
-            [
-                new NamedCallback("init",this.initTestCallback),
-            ]
-        );
         this.init();
         this.build();
     }
@@ -30,8 +20,8 @@ class OtherVM {
         this.namedStreamWState.listenStreamDataForNamedFromCallback((_data) => {
             this.build();
         });
-        const callback = await this.rwtMode.getNamedCallbackFromName("init").callback();
-        debugPrint("OtherVM: " + callback);
+        const firstRequest = await this.firstRequest();
+        debugPrint("OtherVM: " + firstRequest);
         this.namedStreamWState.notifyStreamDataForNamed();
     }
 
@@ -52,16 +42,8 @@ class OtherVM {
         }
     }
 
-    private initReleaseCallback = async (): Promise<string> => {
-        await new Promise(resolve => setTimeout(resolve,1000));
-        this.namedStreamWState.getDataForNamed.isLoading = false;
-        return KeysSuccessUtility.sUCCESS;
-    }
-
-    private initTestCallback = async (): Promise<string> => {
-        await new Promise(resolve => setTimeout(resolve,1000));
-        this.namedStreamWState.getDataForNamed.isLoading = false;
-        return KeysSuccessUtility.sUCCESS;
+    private async firstRequest(): Promise<string> {
+        return ReadyDataUtility.success;
     }
 }
 new OtherVM();

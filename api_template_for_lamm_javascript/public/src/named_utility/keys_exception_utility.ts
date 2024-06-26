@@ -1,22 +1,18 @@
 export class KeysExceptionUtility {
-    /* UNKNOWN */
-    public static readonly uNKNOWN = "uNKNOWN";
-    /* Qw */
-    public static readonly qwQQGetStringWhereIsEmptyParameterUsername = "qwQQGetStringWhereIsEmptyParameterUsername";
     /* ExampleVM */
-    public static readonly exampleVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization = "exampleVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization";
-    public static readonly exampleVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "exampleVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
+    public static readonly exampleVMQQFirstQQFirstRequestQQIsWhereEqualsNullParameterAuthorization = "exampleVMQQFirstQQFirstRequestQQIsWhereEqualsNullParameterAuthorization";
+    public static readonly exampleVMQQFirstQQFirstRequestQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "exampleVMQQFirstQQFirstRequestQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
     /* LoginVM */
-    public static readonly loginVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization = "loginVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization";
-    public static readonly loginVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "loginVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
-    public static readonly loginVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword = "loginVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword";
+    public static readonly loginVMQQFirstQQFirstRequestQQIsWhereEqualsNullParameterAuthorization = "loginVMQQFirstQQFirstRequestQQIsWhereEqualsNullParameterAuthorization";
+    public static readonly loginVMQQFirstQQFirstRequestQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "loginVMQQFirstQQFirstRequestQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
+    public static readonly loginVMQQFirstQQFirstRequestQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword = "loginVMQQFirstQQFirstRequestQQIsWhereEqualsNullWEmptyParametersUsernameAndPassword";
     /* SearchVM */
-    public static readonly searchVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization = "searchVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization";
-    public static readonly searchVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "searchVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
-    public static readonly searchVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParameterQ = "searchVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullWEmptyParameterQ";
+    public static readonly searchVMQQFirstQQFirstRequestQQIsWhereEqualsNullParameterAuthorization = "searchVMQQFirstQQFirstRequestQQIsWhereEqualsNullParameterAuthorization";
+    public static readonly searchVMQQFirstQQFirstRequestQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "searchVMQQFirstQQFirstRequestQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
+    public static readonly searchVMQQFirstQQFirstRequestQQIsWhereEqualsNullWEmptyParameterQ = "searchVMQQFirstQQFirstRequestQQIsWhereEqualsNullWEmptyParameterQ";
     /* UserUsernameVM */
-    public static readonly userUsernameVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization = "userUsernameVMQQFirstQQInitTestCallbackQQIsWhereEqualsNullParameterAuthorization";
-    public static readonly userUsernameVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "userUsernameVMQQFirstQQInitTestCallbackQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
+    public static readonly userUsernameVMQQFirstQQFirstRequestQQIsWhereEqualsNullParameterAuthorization = "userUsernameVMQQFirstQQFirstRequestQQIsWhereEqualsNullParameterAuthorization";
+    public static readonly userUsernameVMQQFirstQQFirstRequestQQIsWhereNotEqualsTokenByAPIParameterAuthorization = "userUsernameVMQQFirstQQFirstRequestQQIsWhereNotEqualsTokenByAPIParameterAuthorization";
     
     private constructor() {
     }
