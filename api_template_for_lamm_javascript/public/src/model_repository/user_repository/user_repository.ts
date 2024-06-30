@@ -3,22 +3,14 @@ import { User } from "../../model/user/user";
 import { ListUser } from "../../model/user/list_user";
 
 export class UserRepository<T extends User, Y extends ListUser<T>> extends BaseModelRepository<T,Y> {
-    public constructor(enumRWTMode: EnumRWTMode) {
-        super(enumRWTMode);
+    public constructor() {
+        super();
     }
 
     protected override getBaseModelFromMapAndListKeys(map: Map<string, any>, listKeys: string[]): T {
-        if(listKeys.length <= 0) {
-            return new User("","") as T;
-        }
-        if(listKeys.length <= 1) {
-            return new User(
-                map.has(listKeys[0]) ? map.get(listKeys[0]) : "",
-                "") as T;
-        }
         return new User(
-            map.has(listKeys[0]) ? map.get(listKeys[0]) : "",
-            map.has(listKeys[1]) ? map.get(listKeys[1]) : "") as T;
+            this.getSafeValueWhereUsedInMethodGetModelFromMapAndListKeysAndIndexAndDefaultValue(map, listKeys, 0, ""),
+            this.getSafeValueWhereUsedInMethodGetModelFromMapAndListKeysAndIndexAndDefaultValue(map, listKeys, 1, "")) as T;
     }
 
     protected override getBaseListModelFromListModel(listModel: T[]): Y {
@@ -37,11 +29,11 @@ export class UserRepository<T extends User, Y extends ListUser<T>> extends BaseM
             this.getUserFromUsernameParameterOneWTestCallback)(username);
     }
 
-    private getListUserWhereTheSearchWasPerformedFromQParameterOneWReleaseCallback = async (q: string): Promise<Result> => {
+    protected getListUserWhereTheSearchWasPerformedFromQParameterOneWReleaseCallback = async (q: string): Promise<Result> => {
         throw new LocalException("UserRepository",EnumGuilty.developer,"UserRepositoryQQGetListUserWhereTheSearchWasPerformedFromQParameterOneWReleaseCallback");
     };
 
-    private getListUserWhereTheSearchWasPerformedFromQParameterOneWTestCallback = async (q: string): Promise<Result> => {
+    protected getListUserWhereTheSearchWasPerformedFromQParameterOneWTestCallback = async (q: string): Promise<Result> => {
         const map = new Map<string,any>(
             [
                 ["users",
@@ -65,23 +57,31 @@ export class UserRepository<T extends User, Y extends ListUser<T>> extends BaseM
                     ["uniqueId", user["uniqueId"]],
                     ["username", user["username"]], 
                 ]),
-                ["uniqueId","username"]));
+                this.getListUserWhereTheSearchWasPerformedFromQParameterOneWListKeys));
         }
         await new Promise(resolve => setTimeout(resolve,1000));
         return Result.success(this.getBaseListModelFromListModel(listModel));
     };
 
-    private getUserFromUsernameParameterOneWReleaseCallback = async (username: string): Promise<Result> => {
+    protected get getListUserWhereTheSearchWasPerformedFromQParameterOneWListKeys(): Array<string> {
+        return ["uniqueId","username"];
+    } 
+
+    protected getUserFromUsernameParameterOneWReleaseCallback = async (username: string): Promise<Result> => {
         throw new LocalException("UserRepository",EnumGuilty.developer,"UserRepositoryQQGetUserFromUsernameParameterOneWReleaseCallback");
     };
 
-    private getUserFromUsernameParameterOneWTestCallback = async (username: string): Promise<Result> => {
+    protected getUserFromUsernameParameterOneWTestCallback = async (username: string): Promise<Result> => {
         await new Promise(resolve => setTimeout(resolve,1000));
         return Result.success(this.getBaseModelFromMapAndListKeys(
             new Map<string,any>([
                 ["uniqueId","62d2ff5d-af0f-46bd-87db-990284b140e2"],
                 ["username",username]
             ]),
-            ["uniqueId","username"]));
+            this.getUserFromUsernameParameterOneWListKeys));
     };
+
+    protected get getUserFromUsernameParameterOneWListKeys(): Array<string> {
+        return ["uniqueId","username"];
+    } 
 }

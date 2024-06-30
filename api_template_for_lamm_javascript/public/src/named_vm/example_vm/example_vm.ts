@@ -1,4 +1,4 @@
-import { BaseNamedState, DefaultState, debugPrint } from "library_architecture_mvvm_modify_javascript";
+import { BaseModelRepository, BaseNamedState, DefaultState, EnumRWTMode, debugPrint } from "library_architecture_mvvm_modify_javascript";
 import { EnumDataForExampleVM } from "./enum_data_for_example_vm";
 import { DataForExampleVM } from "./data_for_example_vm";
 import { KeysExceptionUtility } from "../../named_utility/keys_exception_utility";
@@ -13,6 +13,7 @@ export class ExampleVM {
 
     public constructor(authorization: string) 
     {
+        BaseModelRepository.enumRWTMode = EnumRWTMode.test;
         this.namedState = new DefaultState<DataForExampleVM>(new DataForExampleVM(false,authorization,false,false));
     }
      

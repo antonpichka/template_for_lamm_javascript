@@ -1,4 +1,4 @@
-import { BaseNamedState, DefaultState, debugPrint } from "library_architecture_mvvm_modify_javascript";
+import { BaseModelRepository, BaseNamedState, DefaultState, EnumRWTMode, debugPrint } from "library_architecture_mvvm_modify_javascript";
 import { EnumDataForOtherRedirectVM } from "./enum_data_for_other_redirect_vm";
 import { DataForOtherRedirectVM } from "./data_for_other_redirect_vm";
 import { ReadyDataUtility } from "../../ready_data_utility";
@@ -11,6 +11,7 @@ export class OtherRedirectVM {
     private readonly namedState: BaseNamedState<DataForOtherRedirectVM>;
 
     public constructor() {
+        BaseModelRepository.enumRWTMode = EnumRWTMode.test;
         this.namedState = new DefaultState<DataForOtherRedirectVM>(new DataForOtherRedirectVM(false));
     }
      

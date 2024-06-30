@@ -1,33 +1,34 @@
-import { BaseNamedState, DefaultState, EnumRWTMode, ExceptionController, debugPrint } from "library_architecture_mvvm_modify_javascript";
+import { BaseModelRepository, BaseNamedState, DefaultState, EnumRWTMode, ExceptionController, debugPrint } from "library_architecture_mvvm_modify_javascript";
 import { EnumDataForUserUsernameVM } from "./enum_data_for_user_username_vm";
 import { DataForUserUsernameVM } from "./data_for_user_username_vm";
 import { User } from "../../model/user/user";
 import { KeysExceptionUtility } from "../../named_utility/keys_exception_utility";
 import { ReadyDataUtility } from "../../named_utility/ready_data_utility";
-import { UserRepository } from "../../model_repository/user_repository/user_repository";
+import { FactoryObjectUtility } from "../../named_utility/factory_object_utility";
 
 export class UserUsernameVM {
     // ModelRepository
-    private readonly userRepository = new UserRepository(EnumRWTMode.test);
+    private readonly userRepository = FactoryObjectUtility.getUserRepository;
 
     // NamedUtility
     
     // NamedStreamWState
     private readonly namedState: BaseNamedState<DataForUserUsernameVM>;
 
-     public constructor(
+    public constructor(
         authorization: string, 
         username: string) 
     {
+        BaseModelRepository.enumRWTMode = EnumRWTMode.test;
         this.namedState = new DefaultState<DataForUserUsernameVM>(new DataForUserUsernameVM(false,authorization,username,new User("",""),false,false));
-     }
+    }
      
-     public async initWBuild(
+    public async initWBuild(
         callbackWException: (list: Array<any>) => void,
         callbackWFourHundredOneWYouMustSpecifyAuthorization: () => void,
         callbackWFourHundredOneWTokenIsNotCorrect: () => void,
         callbackWSuccess: (json: {}) => void): Promise<void> 
-     {
+    {
         const firstRequest = await this.firstRequest();
         debugPrint("UserUsernameVM: " + firstRequest);
         const dataForNamed = this.namedState.getDataForNamed;

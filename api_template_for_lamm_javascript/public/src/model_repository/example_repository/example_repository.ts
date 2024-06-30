@@ -1,34 +1,36 @@
-import { BaseModelRepository, EnumGuilty, EnumRWTMode, LocalException, Result } from "library_architecture_mvvm_modify_javascript";
+import { BaseModelRepository, EnumGuilty, LocalException, Result } from "library_architecture_mvvm_modify_javascript";
 import { Example } from "../../model/example/example";
 import { ListExample } from "../../model/example/list_example";
 
 export class ExampleRepository<T extends Example, Y extends ListExample<T>> extends BaseModelRepository<T,Y> {
-    public constructor(enumRWTMode: EnumRWTMode) {
-        super(enumRWTMode);
+    public constructor() {
+        super();
     }
 
     protected override getBaseModelFromMapAndListKeys(map: Map<string, any>, listKeys: string[]): T {
-        if(listKeys.length <= 0) {
-            return new Example("") as T;
-        }
-        return new Example(map.has(listKeys[0]) ? map.get(listKeys[0]) : "") as T;
+        return new Example(
+            this.getSafeValueWhereUsedInMethodGetModelFromMapAndListKeysAndIndexAndDefaultValue(map, listKeys, 0, "")) as T;
     }
 
     protected override getBaseListModelFromListModel(listModel: T[]): Y {
         return new ListExample(listModel) as Y;
     }
 
-    public async getExampleParameterQweService(): Promise<Result> {
+    public async getExampleParameterOne(): Promise<Result> {
         return this.getModeCallbackFromReleaseCallbackAndTestCallbackParameterEnumRWTMode(
-            this.getExampleParameterQweServiceWReleaseCallback,
-            this.getExampleParameterQweServiceWTestCallback)();
+            this.getExampleParameterOneWReleaseCallback,
+            this.getExampleParameterOneWTestCallback)();
     }
 
-    private getExampleParameterQweServiceWReleaseCallback = async (): Promise<Result> => {
-        throw new LocalException("ExampleRepository",EnumGuilty.developer,"ExampleRepositoryQQGetExampleParameterQweServiceWReleaseCallback");
+    protected getExampleParameterOneWReleaseCallback = async (): Promise<Result> => {
+        throw new LocalException("ExampleRepository",EnumGuilty.developer,"ExampleRepositoryQQGetExampleParameterOneWReleaseCallback");
     };
 
-    private getExampleParameterQweServiceWTestCallback = async (): Promise<Result> => {
-        throw new LocalException("ExampleRepository",EnumGuilty.developer,"ExampleRepositoryQQGetExampleParameterQweServiceWTestCallback");
+    protected getExampleParameterOneWTestCallback = async (): Promise<Result> => {
+        throw new LocalException("ExampleRepository",EnumGuilty.developer,"ExampleRepositoryQQGetExampleParameterOneWTestCallback");
     };
+
+    protected get getExampleParameterOneWListKeys(): Array<string> {
+        throw new LocalException("ExampleRepository",EnumGuilty.developer,"ExampleRepositoryQQGetExampleParameterOneWListKeys");
+    } 
 }

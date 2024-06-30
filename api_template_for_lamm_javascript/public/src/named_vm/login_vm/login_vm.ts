@@ -1,15 +1,14 @@
-import { BaseNamedState, DefaultState, EnumRWTMode, ExceptionController, debugPrint } from "library_architecture_mvvm_modify_javascript";
+import { BaseModelRepository, BaseNamedState, DefaultState, EnumRWTMode, ExceptionController, debugPrint } from "library_architecture_mvvm_modify_javascript";
 import { EnumDataForLoginVM } from "./enum_data_for_login_vm";
 import { DataForLoginVM } from "./data_for_login_vm";
 import { KeysExceptionUtility } from "../../named_utility/keys_exception_utility";
 import { ReadyDataUtility } from "../../named_utility/ready_data_utility";
-import { UserRepository } from "../../model_repository/user_repository/user_repository";
-import { SecurityUserRepository } from "../../model_repository/security_user_repository/security_user_repository";
+import { FactoryObjectUtility } from "../../named_utility/factory_object_utility";
 
 export class LoginVM {
     // ModelRepository
-    private readonly userRepository = new UserRepository(EnumRWTMode.test);
-    private readonly securityUserRepository = new SecurityUserRepository(EnumRWTMode.test);
+    private readonly userRepository = FactoryObjectUtility.getUserRepository;
+    private readonly securityUserRepository = FactoryObjectUtility.getSecurityUserRepository;
 
     // NamedUtility
     
@@ -21,6 +20,7 @@ export class LoginVM {
         username: string, 
         password: string) 
     {
+        BaseModelRepository.enumRWTMode = EnumRWTMode.test;
         this.namedState = new DefaultState<DataForLoginVM>(new DataForLoginVM(false,authorization,username,password,false,false,false));
     }
      

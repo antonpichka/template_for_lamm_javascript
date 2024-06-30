@@ -16,7 +16,7 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "express": "^4.19.2",
-    "library_architecture_mvvm_modify_javascript": "^3.0.0",
+    "library_architecture_mvvm_modify_javascript": "^3.0.1",
     "lodash": "^4.17.21"
   }
 }

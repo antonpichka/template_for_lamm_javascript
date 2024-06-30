@@ -1,4 +1,4 @@
-import { BaseNamedStreamWState, DefaultStreamWState, debugPrint } from "library_architecture_mvvm_modify_javascript";
+import { BaseModelRepository, BaseNamedStreamWState, DefaultStreamWState, EnumRWTMode, debugPrint } from "library_architecture_mvvm_modify_javascript";
 import { EnumDataForIndexVM } from "./enum_data_for_index_vm";
 import { DataForIndexVM } from "./data_for_index_vm";
 import { ReadyDataUtility } from "../../named_utility/ready_data_utility";
@@ -11,6 +11,7 @@ class IndexVM {
     private readonly namedStreamWState: BaseNamedStreamWState<DataForIndexVM>;
 
     public constructor() {
+        BaseModelRepository.enumRWTMode = EnumRWTMode.test;
         this.namedStreamWState = new DefaultStreamWState<DataForIndexVM>(new DataForIndexVM(true));
         this.init();
         this.build();

@@ -1,4 +1,4 @@
-import { BaseNamedStreamWState, DefaultStreamWState, debugPrint } from "library_architecture_mvvm_modify_javascript";
+import { BaseModelRepository, BaseNamedStreamWState, DefaultStreamWState, EnumRWTMode, debugPrint } from "library_architecture_mvvm_modify_javascript";
 import { EnumDataForOtherVM } from "./enum_data_for_other_vm";
 import { DataForOtherVM } from "./data_for_other_vm";
 import { ReadyDataUtility } from "../../named_utility/ready_data_utility";
@@ -11,6 +11,7 @@ class OtherVM {
     private readonly namedStreamWState: BaseNamedStreamWState<DataForOtherVM>;
 
     public constructor() {
+        BaseModelRepository.enumRWTMode = EnumRWTMode.test;
         this.namedStreamWState = new DefaultStreamWState<DataForOtherVM>(new DataForOtherVM(true));
         this.init();
         this.build();

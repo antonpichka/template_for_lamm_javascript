@@ -1,14 +1,14 @@
-import { BaseNamedState, DefaultState, EnumRWTMode, ExceptionController, debugPrint } from "library_architecture_mvvm_modify_javascript";
+import { BaseModelRepository, BaseNamedState, DefaultState, EnumRWTMode, ExceptionController, debugPrint } from "library_architecture_mvvm_modify_javascript";
 import { DataForSearchVM } from "./data_for_search_vm";
 import { EnumDataForSearchVM } from "./enum_data_for_search_vm";
 import { ListUser } from "../../model/user/list_user";
 import { KeysExceptionUtility } from "../../named_utility/keys_exception_utility";
 import { ReadyDataUtility } from "../../named_utility/ready_data_utility";
-import { UserRepository } from "../../model_repository/user_repository/user_repository";
+import { FactoryObjectUtility } from "../../named_utility/factory_object_utility";
 
 export class SearchVM {
     // ModelRepository
-    private readonly userRepository = new UserRepository(EnumRWTMode.test);
+    private readonly userRepository = FactoryObjectUtility.getUserRepository;
 
     // NamedUtility
     
@@ -17,6 +17,7 @@ export class SearchVM {
 
     public constructor(authorization: string, q: string)
     {
+        BaseModelRepository.enumRWTMode = EnumRWTMode.test;
         this.namedState = new DefaultState<DataForSearchVM>(new DataForSearchVM(false,authorization,q,new ListUser([]),false,false,false));
     }
      
