@@ -1,4 +1,4 @@
-const { BaseModelRepository, EnumRWTMode } = require("library_architecture_mvvm_modify_javascript");
+const { BaseModelRepository, EnumRWTMode, debugPrint } = require("library_architecture_mvvm_modify_javascript");
 const ip = require("ip");
 const dotenv = require("dotenv");
 const express = require("express");
@@ -51,5 +51,5 @@ app.get("/example", async (req, res) => {
 });
 
 app.listen(SERVER_PORT, () => {
-  console.log(`Server running on: ${ip.address()}:${SERVER_PORT}`);
+  debugPrint(`Server running on: ${ip.address()}:${SERVER_PORT}`);
 });
