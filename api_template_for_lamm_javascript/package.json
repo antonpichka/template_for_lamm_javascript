@@ -1,19 +1,22 @@
 {
   "name": "api_template_for_lamm_javascript",
   "version": "0.0.1",
-  "private": true,
+  "main": "app.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "server": "node app.js"
-  },
-  "devDependencies": {
-    "ts-loader": "^9.5.1",
-    "typescript": "^5.4.5",
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4"
+    "server:dev": "nodemon app.js",
+    "server:prod": "node app.js",
+    "my_sql_service_test_main:named_test_main": "node ./public/src/named_test_main/my_sql_service_test_main.js",
+    "q_test_main:named_test_main": "node ./public/src/named_test_main/q_test_main.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "library_architecture_mvvm_modify_javascript": "^3.0.1"
+    "ip": "^2.0.1",
+    "library_architecture_mvvm_modify_javascript": "^3.0.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
