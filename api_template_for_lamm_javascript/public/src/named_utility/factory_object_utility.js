@@ -1,5 +1,6 @@
 const { LocalException, EnumGuilty } = require("library_architecture_mvvm_modify_javascript");
 const ExampleRepository = require("../model_repository/example_repository/example_repository.js");
+const UserRepository = require("../model_repository/user_repository/user_repository.js");
 
 class FactoryObjectUtility {
     constructor() {
@@ -11,6 +12,10 @@ class FactoryObjectUtility {
     /* ModelRepository */
     static get getExampleRepository() {
         return new ExampleRepository();
+    }
+
+    static get getUserRepository() {
+        return new UserRepository();
     }
 }
 

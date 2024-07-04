@@ -1,20 +1,17 @@
 const mysql = require("mysql");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 class MySQLService {
     static instance = new MySQLService();
-    #pool;
+    #connection;
 
     constructor() {
         if(MySQLService.instance != null) {
             return MySQLService.instance;
         }
-    }
-
-    get getParameterPool() {
-        if(this.#pool != null) {
-            return this.#pool;
-        }
-        this.#pool = mysql.createPool({
+        this.#connection = mysql.createPool({
             host: process.env.DB_HOST,
             port: process.env.DB_PORT,
             user: process.env.DB_USER,
@@ -22,7 +19,20 @@ class MySQLService {
             database: process.env.DB_NAME,
             connectionLimit: process.env.DB_CONNECTION_LIMIT
         });
-        return this.#pool;
+    }
+
+    getQueryFromSqlParameterConnection(sql) {
+        return new Promise((resolve, reject) => {
+            this.#connection.query(sql,[], (err, rows) => {
+                if (err)
+                  return reject(err);
+                resolve(rows);
+              });
+        });
+    }
+
+    closeParameterConnection() {
+        this.#connection.end();
     }
 }
 

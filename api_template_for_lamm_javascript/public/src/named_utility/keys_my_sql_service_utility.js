@@ -3,9 +3,10 @@ const { LocalException, EnumGuilty } = require("library_architecture_mvvm_modify
 class KeysMySQLServiceUtility {
     /* User */
     static user = "users";
-    static userQQuniqueId = "unique_id";
-    static userQQusername = "username";
-    static userQQcreatedAt = "created_at";
+    static userQQId = "id";
+    static userQQUniqueId = "unique_id";
+    static userQQUsername = "username";
+    static userQQCreatedAt = "created_at";
 
     constructor() {
         if (new.target === KeysMySQLServiceUtility) {

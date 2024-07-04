@@ -1,41 +1,47 @@
 const { BaseDataForNamed } = require("library_architecture_mvvm_modify_javascript");
-const EnumDataForExampleVM = require("./enum_data_for_example_vm.js");
 const AlgorithmsUtility = require("../../named_utility/algorithms_utility.js");
+const EnumDataForSearchUsersVM = require("./enum_data_for_search_users_vm.js");
 const dotenv = require("dotenv");
 
 dotenv.config();
 
-class DataForExampleVM extends BaseDataForNamed {
+class DataForSearchUsersVM extends BaseDataForNamed {
     authorization;
+    q;
     isFourHundredOneWYouMustSpecifyAuthorization;
     isFourHundredOneWTokenIsNotCorrect;
+    listUser;
 
-    constructor(isLoading, authorization, isFourHundredOneWYouMustSpecifyAuthorization, isFourHundredOneWTokenIsNotCorrect) {
+    constructor(isLoading, authorization, q, isFourHundredOneWYouMustSpecifyAuthorization, isFourHundredOneWTokenIsNotCorrect, listUser) {
         super(isLoading);
         this.authorization = authorization;
+        this.q = q;
         this.isFourHundredOneWYouMustSpecifyAuthorization = isFourHundredOneWYouMustSpecifyAuthorization;
         this.isFourHundredOneWTokenIsNotCorrect = isFourHundredOneWTokenIsNotCorrect;
+        this.listUser = listUser;
     }
 
     get getEnumDataForNamed() {
         if(this.exceptionController.isWhereNotEqualsNullParameterException()) {
-            return EnumDataForExampleVM.exception;
+            return EnumDataForSearchUsersVM.exception;
         }
         if(this.isFourHundredOneWYouMustSpecifyAuthorization) {
-            return EnumDataForExampleVM.fourHundredOneWYouMustSpecifyAuthorization;
+            return EnumDataForSearchUsersVM.fourHundredOneWYouMustSpecifyAuthorization;
         }
         if(this.isFourHundredOneWTokenIsNotCorrect) {
-            return EnumDataForExampleVM.fourHundredOneWTokenIsNotCorrect;
+            return EnumDataForSearchUsersVM.fourHundredOneWTokenIsNotCorrect;
         }
-        return EnumDataForExampleVM.success;
+        return EnumDataForSearchUsersVM.success;
     }
 
     toString() {
-        return "DataForExampleVM(isLoading: " + this.isLoading + ", " 
+        return "DataForSearchUsersVM(isLoading: " + this.isLoading + ", " 
             + "exceptionController: " + this.exceptionController + ", " 
-            + "authorization: " + this.authorization + ", " 
+            + "authorization: " + this.authorization + ", "
+            + "q: " + this.q + ", "
             + "isFourHundredOneWYouMustSpecifyAuthorization: " + this.isFourHundredOneWYouMustSpecifyAuthorization + ", "
-            + "isFourHundredOneWTokenIsNotCorrect: " + this.isFourHundredOneWTokenIsNotCorrect + ")";
+            + "isFourHundredOneWTokenIsNotCorrect: " + this.isFourHundredOneWTokenIsNotCorrect + ", "
+            + "listUser: " + this.listUser + ")";
     }
 
     get getArrayWhereSwitchAndTwoElementsParameterExceptionController() {
@@ -52,11 +58,19 @@ class DataForExampleVM extends BaseDataForNamed {
         }
     }
 
-    get getJSON() {
+    get getJSONParameterListUser() {
+        const map = this.listUser.listModel.map(itemModel => (
+            {
+                id: itemModel.id,
+                unique_id: itemModel.uniqueId,
+                username: itemModel.username,
+                created_at: itemModel.createdAt
+            }));
         return {
             statusCode: 200,
             timestamp : new Date().toLocaleString(),
-            message : "Success"
+            message : "Success",
+            users: map
         };
     }
 
@@ -69,4 +83,4 @@ class DataForExampleVM extends BaseDataForNamed {
     }
 }
 
-module.exports = DataForExampleVM;
+module.exports = DataForSearchUsersVM;

@@ -7,30 +7,30 @@ class ExampleRepository extends BaseModelRepository {
         super();
     }
 
-    getBaseModelFromMapAndListKeys(map, listKeys) {
+    _getBaseModelFromMapAndListKeys(map, listKeys) {
         return new Example(
             this.getSafeValueWhereUsedInMethodGetModelFromMapAndListKeysAndIndexAndDefaultValue(map, listKeys, 0, ""));
     }
 
-    getBaseListModelFromListModel(listModel) {
+    _getBaseListModelFromListModel(listModel) {
         return new ListExample(listModel);
     }
     
     async getExampleParameterOne() {
         return this.getModeCallbackFromReleaseCallbackAndTestCallbackParameterEnumRWTMode(
-            this.getExampleParameterOneWReleaseCallback,
-            this.getExampleParameterOneWTestCallback)();
+            this._getExampleParameterOneWReleaseCallback,
+            this._getExampleParameterOneWTestCallback)();
     }
 
-    getExampleParameterOneWReleaseCallback = async () => {
+    _getExampleParameterOneWReleaseCallback = async () => {
         throw new LocalException("ExampleRepository",EnumGuilty.developer,"ExampleRepositoryQQGetExampleParameterOneWReleaseCallback");
     };
 
-    getExampleParameterOneWTestCallback = async () => {
+    _getExampleParameterOneWTestCallback = async () => {
         throw new LocalException("ExampleRepository",EnumGuilty.developer,"ExampleRepositoryQQGetExampleParameterOneWTestCallback");
     };
     
-    get getExampleParameterOneWListKeys(){
+    get _getExampleParameterOneWListKeys() {
         throw new LocalException("ExampleRepository",EnumGuilty.developer,"ExampleRepositoryQQGetExampleParameterOneWListKeys");
     } 
 }
