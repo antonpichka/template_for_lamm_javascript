@@ -18,3 +18,7 @@ async function main() {
     }
 }
 main();
+// EXPECTED OUTPUT:
+//
+// 1---9ac307f5-f85b-4b45-a990-743fa0d1e59c---q---Wed Jul 03 2024 12:53:25 GMT+0300 (Eastern European Summer Time)
+// 2---8c23f644-58af-4be5-abcb-5ffe2982fa99---qw---Wed Jul 03 2024 12:53:25 GMT+0300 (Eastern European Summer Time)
