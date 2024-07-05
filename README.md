@@ -8,7 +8,7 @@
 ## Project setup
 
 - [api_template_for_lamm_javascript](https://github.com/antonpichka/template_for_lamm_javascript#api_template_for_lamm_javascript)
-- [Docker](https://github.com/antonpichka/template_for_lamm_javascript#docker)
+- [docker](https://github.com/antonpichka/template_for_lamm_javascript#docker)
 
 ### api_template_for_lamm_javascript
 
