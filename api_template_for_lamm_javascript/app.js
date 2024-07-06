@@ -9,16 +9,17 @@ const SearchUsersVM = require("./public/src/named_vm/search_users_vm/search_user
 dotenv.config();
 
 const app = express();
-const SERVER_PORT = process.env.SERVER_PORT || 3000;
-const ENUM_RWT_MODE = process.env.RELEASE_W_TEST_MODE == "RELEASE" ? EnumRWTMode.release : EnumRWTMode.test;
+const PORT = process.env.PORT;
+const ENUM_RWT_MODE = process.env.RELEASE_W_TEST == "RELEASE" ? EnumRWTMode.release : EnumRWTMode.test;
 BaseModelRepository.enumRWTMode = ENUM_RWT_MODE;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (_req,res) => {
   res.status(200).json({
-    statusCode : 200  ,
+    statusCode : 200,
     timestamp : new Date().toLocaleString(),
     message : "Example API, v1.0.0 - All systems Go"
   });
@@ -79,6 +80,6 @@ app.get("/search", async (req, res) => {
   searchUsersVM.dispose();
 });
 
-app.listen(SERVER_PORT, () => {
-  debugPrint(`Server running on: ${ip.address()}:${SERVER_PORT}`);
+app.listen(PORT, () => {
+  debugPrint(`Server running on: ${ip.address()}:${PORT}`);
 });

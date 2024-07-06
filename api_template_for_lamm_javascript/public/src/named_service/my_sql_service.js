@@ -12,12 +12,12 @@ class MySQLService {
             return MySQLService.instance;
         }
         this.#connection = mysql.createPool({
-            host: process.env.DB_HOST,
-            port: process.env.DB_PORT,
-            user: process.env.DB_USER,
-            password: process.env.DB_PASSWORD,
-            database: process.env.DB_NAME,
-            connectionLimit: process.env.DB_CONNECTION_LIMIT
+            host: process.env.MY_SQL_SERVICE_HOST,
+            port: process.env.MY_SQL_SERVICE_PORT,
+            user: process.env.MY_SQL_SERVICE_USER,
+            password: process.env.MY_SQL_SERVICE_PASSWORD,
+            database: process.env.MY_SQL_SERVICE_NAME,
+            connectionLimit: process.env.MY_SQL_SERVICE_CONNECTION_LIMIT
         });
     }
 
