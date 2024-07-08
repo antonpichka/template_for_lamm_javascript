@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "main": "app.js",
   "scripts": {
-    "server:dev": "nodemon app.js",
-    "server:prod": "node app.js",
+    "start:dev": "nodemon app.js",
+    "start": "node app.js",
     "my_sql_service_test_main:named_test_main": "node ./public/src/named_test_main/my_sql_service_test_main.js",
     "q_test_main:named_test_main": "node ./public/src/named_test_main/q_test_main.js"
   },
