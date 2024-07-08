@@ -43,7 +43,7 @@ class UserRepository extends BaseModelRepository {
             }
             return Result.success(this._getBaseListModelFromListModel(listModel));
         } catch(exception) {
-            return Result.exception(new LocalException("UserRepository",EnumGuilty.device,ReadyDataUtility.unknown,exception.toString()));
+            return Result.exception(new LocalException("UserRepository",EnumGuilty.device,ReadyDataUtility.unknown,exception));
         }
     };
 
