@@ -1,4 +1,4 @@
-const { BaseModelRepository, EnumGuilty, LocalException, Result, debugPrint } = require("library_architecture_mvvm_modify_javascript");
+const { BaseModelRepository, EnumGuilty, LocalException, Result } = require("library_architecture_mvvm_modify_javascript");
 const User = require("../../model/user/user.js");
 const ListUser = require("../../model/user/list_user.js");
 const MySQLService = require("../../named_service/my_sql_service.js");

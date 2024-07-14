@@ -1,9 +1,7 @@
-const { DefaultState, debugPrint } = require("library_architecture_mvvm_modify_javascript");
+const { debugPrint } = require("library_architecture_mvvm_modify_javascript");
 const KeysExceptionUtility = require("../../named_utility/keys_exception_utility.js");
 const ReadyDataUtility = require("../../named_utility/ready_data_utility.js");
-const DataForSearchUsersVM  = require("./data_for_search_users_vm.js");
 const EnumDataForSearchUsersVM = require("./enum_data_for_search_users_vm.js");
-const ListUser = require("../../model/user/list_user.js");
 const FactoryObjectUtility = require("../../named_utility/factory_object_utility.js");
 
 class SearchUsersVM {
@@ -17,7 +15,7 @@ class SearchUsersVM {
 
     constructor(authorization, q) 
     {
-        this.#namedState = new DefaultState(new DataForSearchUsersVM(false,authorization,q,false,false,new ListUser([])));
+        this.#namedState = FactoryObjectUtility.getNamedStateWhereDataWSearchUsersVMFromAuthorizationAndQ(authorization,q);
     }
      
     async initWBuild(

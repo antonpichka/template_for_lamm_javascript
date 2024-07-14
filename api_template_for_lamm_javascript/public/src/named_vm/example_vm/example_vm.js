@@ -1,8 +1,8 @@
-const { DefaultState, debugPrint } = require("library_architecture_mvvm_modify_javascript");
+const { debugPrint } = require("library_architecture_mvvm_modify_javascript");
 const EnumDataForExampleVM = require("./enum_data_for_example_vm.js");
-const DataForExampleVM = require("./data_for_example_vm.js");
 const KeysExceptionUtility = require("../../named_utility/keys_exception_utility.js");
 const ReadyDataUtility = require("../../named_utility/ready_data_utility.js");
+const FactoryObjectUtility = require("../../named_utility/factory_object_utility.js");
 
 class ExampleVM {
     // ModelRepository
@@ -13,7 +13,7 @@ class ExampleVM {
 
     constructor(authorization) 
     {
-        this.#namedState = new DefaultState(new DataForExampleVM(false,authorization,false,false));
+        this.#namedState = FactoryObjectUtility.getNamedStateWhereDataWExampleVMFromAuthorization(authorization);
     }
      
     async initWBuild(
