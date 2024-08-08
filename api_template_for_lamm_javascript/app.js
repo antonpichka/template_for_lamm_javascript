@@ -5,6 +5,9 @@ const express = require("express");
 const cors = require("cors")
 const ExampleVM = require("./public/src/named_vm/example_vm/example_vm.js");
 const SearchUsersVM = require("./public/src/named_vm/search_users_vm/search_users_vm.js");
+const crypto = require('crypto');
+const url = require('url');
+const querystring = require('querystring');
 
 dotenv.config();
 
@@ -50,6 +53,40 @@ app.get("/example", async (req, res) => {
       res.status(200).json(json);
     });
   exampleVM.dispose();
+});
+
+app.get("/telegram_auth", async (req, res) => {
+  const botToken = "7250549190:AAEfjB1HDutzAAK7Dg0YAX72w4lIPm2HuHI";
+  const parsedUrl = url.parse(req.url);
+  const queryParams = querystring.parse(parsedUrl.query);
+
+  const hash = queryParams.hash;
+  const payload = JSON.parse(Buffer.from(queryParams.payload, 'base64').toString());
+
+  const secretKey = crypto.createHash('sha256').update(botToken).digest();
+  const checkHash = crypto.createHmac('sha256', secretKey).update(queryParams.payload).digest('hex');
+
+  if (hash !== checkHash) {
+    res.status(400).send('Invalid hash');
+    return;
+  }
+
+  const user = payload.user;
+  const userId = user.id;
+  const firstName = user.first_name;
+  const lastName = user.last_name;
+  const username = user.username;
+
+  res.status(200).json(
+    {
+      user : {
+        user_id : userId,
+        firstName : firstName,
+        lastName : lastName,
+        username : username
+      }
+    }
+  );
 });
 
 app.get("/search", async (req, res) => {
