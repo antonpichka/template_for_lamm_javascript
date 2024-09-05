@@ -8,13 +8,12 @@ class NotFoundVM {
     // NamedUtility
     
     // TempCacheProvider
-    #tempCacheProvider;
+    #tempCacheProvider = new TempCacheProvider();
 
     // NamedStreamWState
     #namedStreamWState;
 
     constructor() {
-        this.#tempCacheProvider = new TempCacheProvider();
         this.#namedStreamWState = FactoryObjectUtility.getNamedStreamWStateWhereDataWNotFoundVM;
         this.#init();
         this.#build();

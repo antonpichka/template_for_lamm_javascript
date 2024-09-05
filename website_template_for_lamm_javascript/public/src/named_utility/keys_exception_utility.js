@@ -2,7 +2,7 @@ const { LocalException, EnumGuilty } = require("library_architecture_mvvm_modify
 
 class KeysExceptionUtility {
     /* Qw */
-    static #qwQQGetStringWIsEmptyParameterUsername = "qwQQGetStringWIsEmptyParameterUsername";
+    static #qwQQGetStringWIsEmptyWUsername = "qwQQGetStringWIsEmptyWUsername";
 
     constructor() {
         if (new.target === KeysExceptionUtility) {
@@ -11,8 +11,8 @@ class KeysExceptionUtility {
     }
 
 
-    static get qwQQGetStringWIsEmptyParameterUsername() {
-        return this.#qwQQGetStringWIsEmptyParameterUsername;
+    static get qwQQGetStringWIsEmptyWUsername() {
+        return this.#qwQQGetStringWIsEmptyWUsername;
     }
 }
 

@@ -1,12 +1,12 @@
 const { debugPrint } = require("library_architecture_mvvm_modify_javascript");
 const ip = require("ip");
 const dotenv = require("dotenv");
-const express = require("express");
 const routes = require("./routes");
+const express = require("express");
+const app = express();
 
 dotenv.config();
 
-const app = express();
 const port = process.env.PORT;
 
 app.use("/public",express.static(__dirname + "/public/"));

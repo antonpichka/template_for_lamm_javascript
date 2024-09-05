@@ -8,13 +8,12 @@ class OtherVM {
     // NamedUtility
 
     // TempCacheProvider
-    #tempCacheProvider;
+    #tempCacheProvider = new TempCacheProvider();
     
     // NamedStreamWState
     #namedStreamWState;
 
     constructor() {
-        this.#tempCacheProvider = new TempCacheProvider();
         this.#namedStreamWState = FactoryObjectUtility.getNamedStreamWStateWhereDataWOtherVM;
         this.#init();
         this.#build();

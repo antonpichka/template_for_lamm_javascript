@@ -8,13 +8,12 @@ class IndexVM {
     // NamedUtility
 
     // TempCacheProvider
-    #tempCacheProvider;
+    #tempCacheProvider = new TempCacheProvider();
     
     // NamedStreamWState
     #namedStreamWState;
 
     constructor() {
-        this.#tempCacheProvider = new TempCacheProvider();
         this.#namedStreamWState = FactoryObjectUtility.getNamedStreamWStateWhereDataWIndexVM;
         this.#init();
         this.#build();

@@ -1,7 +1,7 @@
 const express = require("express");
+const router = express.Router();
 const { TempCacheProvider, debugPrint } = require("library_architecture_mvvm_modify_javascript");
 const KeysTempCacheProviderUtility = require("./public/src/named_utility/keys_temp_cache_provider_utility.js");
-const router = express.Router();
 
 router.get("/", (_req, res) => {
   const tempCacheProvider = new TempCacheProvider();

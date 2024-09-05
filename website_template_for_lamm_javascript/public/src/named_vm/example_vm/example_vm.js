@@ -8,13 +8,12 @@ class ExampleVM {
     // NamedUtility
 
     // TempCacheProvider
-    #tempCacheProvider;
+    #tempCacheProvider = new TempCacheProvider();
     
     // NamedStreamWState
     #namedStreamWState;
 
     constructor() {
-        this.#tempCacheProvider = new TempCacheProvider();
         this.#namedStreamWState = FactoryObjectUtility.getNamedStreamWStateWhereDataWExampleVM;
         this.#init();
         this.#build();
